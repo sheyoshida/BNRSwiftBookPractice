@@ -28,7 +28,7 @@ let townName: String = "Kamloops"
 
 var unemploymentRate: Int = 2
 
-let townDescripion = "\(townName) has a population of \(population). There are \(numberOfStoplights) stop lights and \(numberOfDogs) dogs. The unemployment rate is \(unemploymentRate)." // string interpolation
+let townDescripion = "\(townName) has a population of \(population). There are \(numberOfStoplights) stoplights and \(numberOfDogs) dogs. The unemployment rate is \(unemploymentRate)." // string interpolation
 
 print(townDescripion)
 
@@ -99,6 +99,96 @@ let numberOfChapters = 3 // type inferred by the compiler
 
 let numberOfPeople: UInt = 40
 let volumeAdjustment: Int32 = -1000
+
+// Operations on Integers
+
+let numOfPeople: UInt = 40
+let volAdjustment: Int32 = -1000
+
+print(10 + 20)
+print(30 - 5)
+print(5 * 6)
+
+// use parenthesis to make your operations explicit, they are always evaluated first
+
+print(10 + 2 * 5) // 20, because 2 * 5 is evaluated first
+print((10 + 2) * 5) // 60, 10 + 2 is evaluated first
+print(30 - 5 - 5) // 20, because 30 - 5 is evaluated first
+print(30 - (5 - 5)) // 30, because 5 - 5 is evaluated first
+
+print(11 / 3) // 3 with no remainder as this is an integer
+print(11 % 3) // 2 is the remainder of this equation 
+
+// operator shorthand
+
+var x = 10
+x++
+print("x has been incremented to \(x)")
+
+x--
+print("x has been deccremented to \(x)")
+
+x += 10 // x = x + 10, you can also use -=, *=, /=
+
+// overflow operators
+
+let y: Int8 = 120
+let z = y &+ 10 // this crashes without the "&" (Overflow Operator) as Swift expects z to be an Int8, just like y. Int8 can only hold values from -128 to 127.
+
+print("120 &+ 10 is \(z)") // -126 is unexpected here, due to Int8.
+
+// converting between integer types
+
+let a: Int16 = 200
+let b: Int8 = 50
+//let c = a + b // this crashes because a and b are not the same type. 
+let c = a + Int16(b) // convert it like this
+
+// floating point numbers (numbers with decimals)
+
+// since double is larger, it is more precise and is the DEFAULT floating-point number in Swift
+
+let d1 = 1.1 // implicitly double
+let d2: Double = 1.1 // 64-bit
+let f1: Float = 100.3 // 32-bit
+
+// Switch statements
+
+// when an if/else statement gets complex, it is good practice to use a switch statement.
+
+var statusCode: Int = 405
+var errorString: String = "The request failed with the error:" // default statement for control transfer statement / fallthrough
+
+switch statusCode {
+//case 400:
+//    errorString = "Bad request"
+//case 401:
+//    errorString = "Unauthorized"
+//case 402:
+//    errorString = "Forbidden"
+//case 403:
+//    errorString = "Not Found"
+//default:
+//    errorString = "None"
+
+// refactored code:
+case 400, 401, 403, 404:
+errorString = "there was something wrong with the request." // append string
+fallthrough // fallthrough keyword
+default:
+    errorString += " please review the request and try again." // append string
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
