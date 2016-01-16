@@ -179,6 +179,48 @@ default:
     errorString += " please review the request and try again." // append string
 }
 
+// VERY COOL NON BOOK DISCOVERY. You can perform these functions on sets.
+
+let array1 = ["a", "b", "c"]
+let array2 = ["a", "b", "d"]
+
+let set1 = Set(array1) // create set
+let set2 = Set(array2)
+
+set1.union(set2)        // {"a", "b", "c", "d"}
+set1.intersect(set2)    // {"a", "b"}
+set1.subtract(set2)     // {"c"}
+set1.exclusiveOr(set2)  // {"c", "d"}
+
+// RANGES! 
+
+// we can examine a RANGE of values with 1...10 (this includes both 1 and 10)
+// you can also add switch statement cases with a comma
+// value binding can be added to strings with \() syntax
+
+var secretCode: Int = 409
+var errorMessage: String = "The request failed with an error:"
+
+switch secretCode {
+case 100, 101: // check out this comma!
+    errorMessage += " Informational, \(secretCode)" // value binding with \()
+case 204:
+    errorMessage += " Successful but no content, 204." // appending strings with +=
+case 300...307: // here is a range 300 to 307
+    errorMessage += " Redirection, \(secretCode)"
+case 308...400:
+    errorMessage += " Client error, \(secretCode)"
+default:
+    errorString = "\(secretCode) is not a known error code." // changing var string (no +=)
+}
+
+// WHERE CLAUSES:
+
+// the code above could be refactored
+
+
+
+
 
 
 
