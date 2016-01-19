@@ -269,6 +269,51 @@ case let q4 where (point.x < 0) && (point.y < 0):
 }
 // this maps out a graph with x, y coordinates and plots quadrant location! 1,4 would be in q1. 
 
+// LOOPS!
+
+// the FOR / IN loop - best used when th enumber of iterations is known or easy to derive.
+var myFirstInt: Int = 0
+
+for i in 1...5 { // from 1 - 5
+    ++myFirstInt // add 1 to each iteration
+    print("myFirstInt equals \(myFirstInt) at iteration \(i)") // 1, 2, 3, 4, 5
+}
+
+// you can also use CASE statements in For loops!! 
+// Case statements will be more useful once we review collections!
+for case let i in 1...10 where i % 3 == 0 { // print out multiples of 3 in range 1 - 10.
+    print(i)
+}
+
+// is equal to:
+for i in 1...10 { // this method is less elegant as there are more lines of code.
+    if i % 3 == 0 {
+        print(i)
+    }
+}
+
+// Swift also supports the classic for loop:
+for var i = 1; i < 10; i++ {
+    if i % 3 == 0 { // and the nested for loop
+        print(i)
+    }
+}
+
+// the WHILE loop will continue as long as a certain condition is met.
+// while loops are best for circumstances where the number of iterations the loop will pass through is unknown.
+var i = 1
+while i < 6 {
+    ++myFirstInt
+    print(myFirstInt)
+    ++i
+}
+
+
+
+
+
+
+
 
 
 
