@@ -308,6 +308,85 @@ while i < 6 {
     ++i
 }
 
+// Repeat While Loops
+// this is called a Do While loop in other languages
+
+var shields = 0
+repeat {
+print("Fire those blasters")
+} while shields > 0 // this case creates an infinite loop
+
+// Control Transfer Statements, Redux
+
+var shield = 5
+var blastersOverheating = false
+var blasterFireCount = 0
+var spaceDemonsDestroyed = 0
+
+//while shield > 0 {
+//    if spaceDemonsDestroyed == 10 {
+//        print("You beat the game!")
+//        break // add break to end the infinite loop
+//    }
+//    if blastersOverheating {
+//        print("Blasters are overheated! Cooldown initiated.")
+//        sleep(5)
+//        print("Blasters ready to fire.")
+//        sleep(1)
+//        blastersOverheating = false
+//        blasterFireCount = 0
+//    }
+//    if blasterFireCount > 5 {
+//        blastersOverheating = true
+//        continue
+//    }
+//    // Fire blasters!
+//    print("Fire blasters!")
+//    ++blasterFireCount
+//    ++spaceDemonsDestroyed
+//}
+
+// Challenge: 
+// print even numbers up to 100 five times.
+
+var chickens = 0
+var count = 10
+
+for var i = 0; i <= count; i++ {
+    for var j = 1; j <= 5; j++ {
+        if i % 2 == 0 {
+            print(i)
+        }
+    }
+}
+
+// Strings: 
+
+let playground = "Hello, playground"
+var mutablePlayground = "Hello, mutable playground"
+mutablePlayground += "!!"
+
+for c: Character in mutablePlayground.characters { // print out individual characters
+    print("\(c)")
+}
+
+// swift strings are composed of "Unicode scalars". 21-bit numbers that represent a specific character in the Unicode standard. ie: U+0061 is the Latin small letter "a". U+1F60E is a smiley emoji with sunglasses 😎 so...
+
+let oneCoolDude = "\u{1F60E}" // emoji!
+let grimacingDude = "\u{1F62C}" // more emoji!!
+let aAcute = "\u{0061}\u{0301}" // accents!!
+
+// the "\u{}" syntax represents a Unicode scalar
+
+for scalar in playground.unicodeScalars {
+    print("\(scalar.value)") // each number represents the scalar value of each letter in the "Hello playground" string
+}
+
+
+
+
+
+
 
 
 
