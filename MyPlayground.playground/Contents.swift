@@ -430,10 +430,10 @@ if errorCodeString != nil {
 
 // CODING CHALLENGE: FizzBuzz / CracklePop...
 
-// with a for loop (similar to obj c)
+// My first coding language is Objective C and I'm learning to write in Swift, so my first instinct was to use the traditional for loop:
 for i = 1; i <= 100; i++ {
     if (i % 3 == 0) && (i % 5 == 0) {
-        print("Crackle Pop")
+        print("CracklePop")
     } else {
         if i % 3 == 0 {
             print("Crackle")
@@ -445,14 +445,14 @@ for i = 1; i <= 100; i++ {
             }
         }
     }
-} // so many brackets... Find a more elegant way to do this:
+} // but this method has so many brackets...
 
-// in a function with a switch statement!
+// So I refactored it as a function with a recursive switch statement!
 func cracklePop(i: Int) -> String {
     let result = (i % 3, i % 5)
     switch result {
     case (0, 0):
-        return "Crackle Pop" // for some reason this skips number 5... not the best solution.
+        return "CracklePop"
     case (0, _):
         return "Crackle"
     case (_, 0):
@@ -461,6 +461,7 @@ func cracklePop(i: Int) -> String {
         return "\(i)"
     }
 }
+
 for number in 1...100 {
     print(cracklePop(number))
 }
