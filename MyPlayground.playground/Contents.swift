@@ -382,6 +382,98 @@ for scalar in playground.unicodeScalars {
     print("\(scalar.value)") // each number represents the scalar value of each letter in the "Hello playground" string
 }
 
+// Indices and Ranges: 
+
+// because strings can be thought of as ordered collections of characters, you can call 
+let fromStart = playground.startIndex
+let toPosition = 4 // the first position is 0
+let end = fromStart.advancedBy(toPosition)
+let fifthCharacter = playground[end] // 0 = fifth char of "hello"
+let range = fromStart...end
+let firstFive = playground[range]
+
+// Optionals:
+
+// special feature used to indicate that an instance may not have a value. 
+// When you see an optional, you know one of two things about that instance: either it has a value and is ready for use, or has no value.
+// If an instance has no value, we say it is nil.
+// You can use optionals with any type that is potentially nil. 
+
+// Optional Types:
+
+// Optionals make Swift safer. An instance that may potentially be nil should be declared an optional type. This prevents crashes!
+// Let's declare an optional type: 
+
+var errorCodeString: String? // the ? makes errorCodeString an optional of the type String.
+//errorCodeString = "404" // thanks to optionals, if this line is nil, the program won't crash.
+print(errorCodeString)
+
+if errorCodeString != nil {
+    let theError = errorCodeString! // ! = forced unwrapping
+    print(theError)
+}
+
+// forced unwrapping accesses the underlying value of th eoptional, which allows you to gran "404" and assign it to the constant theError. 
+// forced = it will try to acces the underlying value whether or not there is a value at all. 
+// the danger of forced unwrapping: if there is no value inside of the optional, the program will crash at runtime. Use these sparingly. 
+
+// Optional Binding: 
+
+// this is a useful pattern to detect if an optional contains a value. 
+//if let temporaryConstant = anOptional {
+//    // do something with temporaryConstant
+//} else {
+//    // there was no value in anOptional / anOptional is nil
+//}
+
+
+
+// CODING CHALLENGE: FizzBuzz / CracklePop...
+
+// with a for loop (similar to obj c)
+for i = 1; i <= 100; i++ {
+    if (i % 3 == 0) && (i % 5 == 0) {
+        print("Crackle Pop")
+    } else {
+        if i % 3 == 0 {
+            print("Crackle")
+    } else {
+        if i % 5 == 0 {
+            print("Pop")
+    } else {
+            print("\(i)")
+            }
+        }
+    }
+} // so many brackets... Find a more elegant way to do this:
+
+// in a function with a switch statement!
+func cracklePop(i: Int) -> String {
+    let result = (i % 3, i % 5)
+    switch result {
+    case (0, 0):
+        return "Crackle Pop" // for some reason this skips number 5... not the best solution.
+    case (0, _):
+        return "Crackle"
+    case (_, 0):
+        return "Pop"
+    default:
+        return "\(i)"
+    }
+}
+for number in 1...100 {
+    print(cracklePop(number))
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
