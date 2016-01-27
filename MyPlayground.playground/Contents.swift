@@ -392,41 +392,6 @@ let fifthCharacter = playground[end] // 0 = fifth char of "hello"
 let range = fromStart...end
 let firstFive = playground[range]
 
-// Optionals:
-
-// special feature used to indicate that an instance may not have a value. 
-// When you see an optional, you know one of two things about that instance: either it has a value and is ready for use, or has no value.
-// If an instance has no value, we say it is nil.
-// You can use optionals with any type that is potentially nil. 
-
-// Optional Types:
-
-// Optionals make Swift safer. An instance that may potentially be nil should be declared an optional type. This prevents crashes!
-// Let's declare an optional type: 
-
-var errorCodeString: String? // the ? makes errorCodeString an optional of the type String.
-//errorCodeString = "404" // thanks to optionals, if this line is nil, the program won't crash.
-print(errorCodeString)
-
-if errorCodeString != nil {
-    let theError = errorCodeString! // ! = forced unwrapping
-    print(theError)
-}
-
-// forced unwrapping accesses the underlying value of th eoptional, which allows you to gran "404" and assign it to the constant theError. 
-// forced = it will try to acces the underlying value whether or not there is a value at all. 
-// the danger of forced unwrapping: if there is no value inside of the optional, the program will crash at runtime. Use these sparingly. 
-
-// Optional Binding: 
-
-// this is a useful pattern to detect if an optional contains a value. 
-//if let temporaryConstant = anOptional {
-//    // do something with temporaryConstant
-//} else {
-//    // there was no value in anOptional / anOptional is nil
-//}
-
-
 
 // CODING CHALLENGE: FizzBuzz / CracklePop...
 
@@ -447,7 +412,7 @@ for i = 1; i <= 100; i++ {
     }
 } // but this method has so many brackets...
 
-// So I refactored it as a function with a recursive switch statement!
+// So I refactored it as a function with a switch statement!
 func cracklePop(i: Int) -> String {
     let result = (i % 3, i % 5)
     switch result {
@@ -467,6 +432,73 @@ for number in 1...100 {
 }
 
 
+// Optionals:
+
+// special feature used to indicate that an instance may not have a value.
+// When you see an optional, you know one of two things about that instance: either it has a value and is ready for use, or has no value.
+// If an instance has no value, we say it is nil.
+// You can use optionals with any type that is potentially nil.
+
+// Optional Types:
+
+// Optionals make Swift safer. An instance that may potentially be nil should be declared an optional type. This prevents crashes!
+// Let's declare an optional type:
+
+var errorCodeString: String? // the ? makes errorCodeString an optional of the type String.
+errorCodeString = "404" // thanks to optionals, if this line is nil, the program won't crash.
+print(errorCodeString)
+
+// Forced Unwrapping:
+
+if errorCodeString != nil {
+    let theError = errorCodeString! // ! = forced unwrapping
+    print(theError)
+}
+// the danger of forced unwrapping: if there is no value inside of the optional, the program will crash at runtime. Use these sparingly.
+
+// Optional Binding:
+
+// this is a VERY useful pattern to detect if an optional contains a value. It is also safer than forced/implicit unwrapping. ;)
+
+if let theError = errorCodeString {
+    print(theError)
+}
+
+// Implicitly Unwrapped Optionals:
+
+// not used often unless using class initialization
+// these are like regular optional types, but do not need to be unwrapped!
+
+var newErrorCodeString: String! // we declare these with a !
+newErrorCodeString = "404"
+
+// Optional Chaining: 
+
+// this is a mechanism for querying an optional to determine whether it contains a value.
+var chainedErrorCodeString: String?
+chainedErrorCodeString = "404"
+var errorDescription: String?
+if let theError = chainedErrorCodeString, errorcodeInteger = Int(theError)
+    where errorcodeInteger == 404 {
+        errorDescription = ("\(errorcodeInteger + 200): the requested resource was not found.")
+
+}
+
+var upCaseErrorDescription = errorDescription?.uppercaseString // optional chaining will return an optional
+errorDescription
+
+// Modify an Optional in Place:
+
+//add a call to appendContentsOf(_:) to do this. 
+upCaseErrorDescription?.appendContentsOf(" PLEASE TRY AGAIN.")
+upCaseErrorDescription
+
+// Nil Coalescing Operator:
+
+let description = errorDescription ?? "No error" // left part must be an optional to use this
+
+
+// Part III - Collections and Functions:
 
 
 
