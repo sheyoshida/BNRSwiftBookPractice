@@ -500,6 +500,122 @@ let description = errorDescription ?? "No error" // left part must be an optiona
 
 // Part III - Collections and Functions:
 
+/* Arrays: 
+- unlike, Objective C, Swift's arrays can hold any type of object (or non object)
+*/
+
+// mutable variable of type array containing string types
+//var bucketList: Array<String>
+// this is the same as:
+var bucketList: [String] // brackets indicate string type of array
+bucketList = ["Climb Mt. Everest"] // add item to array
+
+// or
+var toDoList = ["Climb Mt. Everest"]
+
+toDoList.append("Fly hot air balloon to Fuji") // add item to end of array
+toDoList.append("Scuba dive in the Great Blue Hole")
+toDoList.append("Find a triple rainbow")
+toDoList.append("Build cool Swift app")
+toDoList.append("Watch Lord of the Rings trilogy")
+
+// manipulating arrays:
+
+toDoList.removeAtIndex(5) // remove third element
+toDoList[3] // access items like this
+toDoList.insert("Toboggan across Alaska", atIndex: 2) // add at specific spot, everything else is pushed over
+print(toDoList.count) // find number of items in list
+print(toDoList[0...2]) // print first 3 items
+
+
+// append existing string
+toDoList[2] += " and learn to dogsled"
+toDoList[2]
+
+toDoList[0] = "Climb Mt. Kilimanjaro" // replace first item
+toDoList
+
+// create lump of items to add to existing array:
+var newItems = [ "Learn to Ski",
+    "Build a website",
+    "Study discrete math",
+    "Write blog post" ]
+
+// add items with a loop
+//for item in newItems {
+//    toDoList.append(item)
+//}
+
+// or append with the addition assignment operator...
+toDoList += newItems
+print(toDoList)
+
+// comparing arrays: 
+var listToCompare = [
+    "Climb Mt. Kilimanjaro",
+    "Fly hot air balloon to Fuji",
+    "Toboggan across Alaska and learn to dogsled",
+    "Scuba dive in the Great Blue Hole",
+    "Find a triple rainbow",
+    "Build cool Swift app",
+    "Learn to Ski",
+    "Build a website",
+    "Study discrete math",
+    "Write blog post"
+]
+print(listToCompare)
+
+let equal = (toDoList == listToCompare) // order of elements matters
+
+// IMMUTABLE Array: 
+
+let lunches = [ // use let instead of var...
+    "Cheeseburger",
+    "Veggie Pizza",
+    "Chicken Caesar Salad",
+    "Black Bean Burrito",
+    "Falafel wrap"
+]
+
+// Bronze Challenge: 
+
+var toDoItems = [
+    "take out garbage",
+    "pay bills",
+    "cross off finished items"
+]
+
+let searchItem = "pay bills" // search for item
+if toDoItems.contains(searchItem) {
+    print("yes, \(searchItem) is in the list.")
+} else {
+    print("no, \(searchItem) is not in the list.")
+}
+toDoItems
+
+// Silver Challenge: 
+
+var reversedList: [String] = [] // create new array to hold items
+for item in toDoItems { // loop through original list
+    reversedList.insert("\(item)", atIndex: 0) // add each item to start of reverse list - this will reverse it
+}
+print(reversedList)
+
+// OR: do it with a built in function!
+let reversedAnotherWay = reversedList.reverse()
+let forwardsAgain = Array(reversedAnotherWay)
+
+// this is the syntax for that:
+let forwards = [1, 2, 3, 4]
+let lazyBackwards = forwards.reverse()
+let eagerBackwards = Array(lazyBackwards) // [4, 3, 2, 1]
+
+
+
+
+
+
+
 
 
 
