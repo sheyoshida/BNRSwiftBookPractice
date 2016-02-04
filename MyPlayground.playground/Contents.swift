@@ -610,6 +610,25 @@ let forwards = [1, 2, 3, 4]
 let lazyBackwards = forwards.reverse()
 let eagerBackwards = Array(lazyBackwards) // [4, 3, 2, 1]
 
+// DICTIONARIES: 
+
+/* 
+- holds key-value pairs
+- keys must be unique
+- keys must be hashable (ie: type string, int, float, double)
+*/
+
+// there are FOUR ways to create a dictionary:
+var dict1: Dictionary<String, Double> = [:]
+var dict2 = Dictionary<String, Double>()
+var dict3: [String:Double] = [:]
+var dict4 = [String:Double]()
+// each of these yields a fully initialized instance of the Dictionary type
+
+// Populating a dictionary: 
+var movieRatings = ["donnie darko": 4, "air bud 3": 5, "home alone": 4]
+
+
 
 
 
