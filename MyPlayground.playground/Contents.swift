@@ -626,8 +626,71 @@ var dict4 = [String:Double]()
 // each of these yields a fully initialized instance of the Dictionary type
 
 // Populating a dictionary: 
-var movieRatings = ["donnie darko": 4, "air bud 3": 5, "home alone": 4]
+var movieRatings = ["donnie darko": 4, "air bud 3": 5, "home alone": 4, "snowpiercer": 4, "wayne's world": 4, "merry christmas mr bean": 7]
 
+// read value from dictionary
+let darkoRating = movieRatings["donnie darko"]
+
+// modify a value
+movieRatings["air bud 3"] = 2
+movieRatings.updateValue(10, forKey: "home alone") // updateValue could be an optional
+movieRatings
+
+// use an optional to gain access to a key's old value:
+let oldRating: Int? = movieRatings.updateValue(5, forKey: "donnie darko")
+
+if let lastRating = oldRating, currentRating = movieRatings["donnie darko"] {
+    print("old rating: \(lastRating); current rating: \(currentRating)")
+}
+
+movieRatings["homeward bound"] = 3 // add value
+movieRatings.removeValueForKey("home alone") // remove value
+movieRatings["homeward bound"] = nil // or remove whole value by setting to nil
+movieRatings
+
+// looping
+/* 
+- use a "for in" loop with a swift dictionary
+- this mechanism breaks each entry yint oparts by providing temporary constants representing the key and value
+- these constants re placed within a tuple that the for in loop can access inside of its body
+*/
+
+for (key, value) in movieRatings { // loop with a tuple!
+    print("the movie \(key) was rated \(value)")
+}
+
+for movie in movieRatings.keys { // only access keys - you can also access .values
+    print("user has rated \(movie).")
+}
+
+// Immutable Dictionaries
+/* 
+- works the same as an array 
+- you use the "let" keyword to tell the Swift compiler that you do not want your instance of Dictionary to change
+*/
+let albums = [        "tigermilk": 1996,
+     "if you're feeling sinister": 1996,
+    "the boy with the arab strap": 1998,
+                   "storytelling": 2002,
+      "dear catastrophe waitress": 2003,
+               "the life pursuit": 2006] // you can space them out to be more readable too! 
+
+// translating a dictionary into an array:
+let watchedMovies = Array(movieRatings.keys)
+
+// silver challenge
+
+var canadianPlaces = ["BC": ["vancouver", "kamloops", "kelowna", "vernon", "victoria"],
+    "AB": ["calgary", "edmonoton", "canmore", "jasper", "hinton", "nelson", "banff"],
+    "SK": ["saskatoon", "regina", "moosejaw", "sweetgrass"],
+    "MB": ["winnipeg"],
+    "ON": ["toronto", "waterloo", "windsor"],
+    "QC": ["montreal", "quebec"],
+    "NS": ["halifax"]]
+
+for city  in canadianPlaces.keys {
+    print("welcome to beautiful \(city)!")
+}
 
 
 
