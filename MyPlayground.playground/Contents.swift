@@ -428,9 +428,28 @@ func cracklePop(i: Int) -> String {
 }
 
 for number in 1...100 {
-    print(cracklePop(number))
+//    print(cracklePop(number))
 }
 
+
+// do it in one function... ...
+func cracklePop() {
+    
+    for number in 1...100 {
+        let result = (number % 3, number % 5) // use tuples!
+        switch result {
+        case (0, 0):
+            print("CracklePop")
+        case (0, _):
+            print("Crackle")
+        case (_, 0):
+            print("Pop")
+        default:
+            print("\(number)")
+        }
+    }
+}
+cracklePop()
 
 // Optionals:
 
