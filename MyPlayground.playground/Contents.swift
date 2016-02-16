@@ -638,7 +638,7 @@ let eagerBackwards = Array(lazyBackwards) // [4, 3, 2, 1]
 */
 
 // there are FOUR ways to create a dictionary:
-var dict1: Dictionary<String, Double> = [:]
+var dict1: Dictionary<String, Double> = [:] // [:] = literal syntax
 var dict2 = Dictionary<String, Double>()
 var dict3: [String:Double] = [:]
 var dict4 = [String:Double]()
@@ -646,6 +646,50 @@ var dict4 = [String:Double]()
 
 // Populating a dictionary: 
 var movieRatings = ["donnie darko": 4, "air bud 3": 5, "home alone": 4]
+
+// Accessing and modifying a dictionary: 
+
+print("I have rated \(movieRatings.count) movies")
+
+// access value for key
+let darkoRating = movieRatings["donnie darko"]
+print("darko rating: \(darkoRating)")
+
+// add key and value to end of list
+movieRatings["turner and hooch"] = 4
+
+// modify value
+movieRatings["turner and hooch"] = 3
+
+// use optional binding to access old key value
+let oldRating: Int? = movieRatings.updateValue(5, forKey: "turner and hooch") // use optional
+if let lastRating = oldRating, currentRating = movieRatings["turner and hooch"] {
+    print("old rating: \(lastRating); current rating: \(currentRating)")
+}
+
+// remove value
+movieRatings.removeValueForKey("turner and hooch")
+// or
+movieRatings["turner and hooch"] = nil
+
+// looping
+for (key, value) in movieRatings {
+    print("the movie \(key) was rated \(value).")
+}
+
+// just the keys please
+for movie in movieRatings.keys {
+    print("user has rated \(movie)")
+}
+
+// immutable dictionaries
+let album = ["tigermilk": 1996, "the boy with the arab strap": 1997, "dear catastrophe waitress": 2003]
+
+// translating dictionary to array
+let watchedMovies = Array(movieRatings.keys)
+
+// Sets: 
+
 
 
 
