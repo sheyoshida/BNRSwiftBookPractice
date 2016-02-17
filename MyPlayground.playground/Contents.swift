@@ -738,6 +738,47 @@ for city  in canadianPlaces.keys {
     print("welcome to beautiful \(city)!")
 }
 
+// Sets: 
+
+/* 
+- Can only store unique values
+*/
+
+// create empty instance of set
+var groceryBag = Set<String>()
+
+// INSERT items
+groceryBag.insert("apples")
+groceryBag.insert("oranges")
+groceryBag.insert("pears")
+
+// loop through to log
+for food in groceryBag {
+    print(food)
+}
+
+// create a set with items
+var groceries: Set = ["peaches", "grapes", "pineapple", "oranges"]
+
+// check ot see if set CONTAINS item
+let bananas = groceryBag.contains("bananas") // nope, no bananas
+
+// combine sets with UNION
+let giantBag = groceryBag.union(groceries)
+
+// find common items with INTERSECTS
+let commonItems = groceryBag.intersect(groceries)
+
+// check for unique items and return bool with DISJOINT
+let checkForRepeats = groceryBag.isDisjointWith(groceries) // do two sets contain unique items?
+
+// INSERT item
+groceryBag.insert("strawberries")
+
+// REMOVE item
+groceryBag.remove("apples")
+
+
 
 
 
