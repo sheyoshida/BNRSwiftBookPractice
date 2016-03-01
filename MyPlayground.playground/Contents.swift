@@ -779,6 +779,209 @@ groceryBag.insert("strawberries")
 groceryBag.remove("apples")
 
 
+// FUNCTIONS: 
+/*
+A function is a named set of code that is used to accomplish a specific task like: 
+- define argument
+- return argument
+*/
+
+func printGreeting() { // no parameters
+    print("hello playground")
+}
+
+func printPersonalGreeting(name: String) { // with an argument
+    print("Hello \(name), welcome!")
+}
+printPersonalGreeting("Shena")
+
+func divisionDescription(num: Double, den: Double) {
+    print("\(num) divided by \(den) equals \(num / den).") // math inside of string
+}
+divisionDescription(9.0, den: 3.0)
+
+// you can makeparameters more descriptive so that they appear when you call the function:
+
+func divideDescript(forNumerator num: Double, andDenominator den: Double) {
+    print("\(num) divided by \(den) equals \(num / den).")
+}
+divideDescript(forNumerator: 9.0, andDenominator: 3.0) // voila! it is autofilled
+
+// VARIADIC parameters...:
+/* 
+- these take zero or more values for the argument
+- each function can only have one variadic parameter
+- should be final parameter in list
+- values provided to the argument are made available within the function's body as an ARRAY
+- indicated by three periods after the paramater function...
+*/
+
+func printPersonalGreetings(names: String...) {
+    for name in names {
+        print("Hello \(name), welcome to the playground!")
+    }
+}
+printPersonalGreetings("Shena", "Ryan", "Penny", "Virtch")
+
+// DEFAULT parameter values: 
+/*
+- you can also set default values
+- must be at end of function's parameter list
+*/
+
+func divisionDescriptionDefault(forNumerator num: Double,
+                                andDenominator den: Double,
+                                withPunctuation pun: String = ".") { // default value
+    print("\(num) divided by \(den) equals \(num / den)\(pun)")
+}
+divisionDescriptionDefault(forNumerator: 9.0, andDenominator: 3.0)// with default punctuation
+divisionDescriptionDefault(forNumerator: 10.0, andDenominator: 2.0, withPunctuation: "!")// change punctuation
+
+// IN-OUT parameters:
+/*
+- sometimes, you may wish to modify the value of an argument
+- in-out parameters allow a function's impact on a variable to live beyone the function's body
+BUT:
+- in-out functions can NOT have default values.
+- in-out functions can not bave variadic parameters...
+*/
+
+// you have a function that takes an error message and appends some information based on conditions: 
+var myError = "the request failed:"
+func appendErrorCode(code: Int, inout toErrorString errorString: String) { // inout parameter
+    if code == 400 {
+        errorString += " bad request."
+    }
+}
+appendErrorCode(400, toErrorString: &myError) // & = inout indicator, implies that the variable will be modified by the function
+
+//  RETURNING from a function: 
+
+func divisionDescp(forNumerator num: Double,
+                   andDenominator den: Double,
+                   withPunctuation pun: String = ".") -> String {
+    return "\(num) divided by \(den) equals \(num / den)\(pun)"
+        
+}
+print(divisionDescp(forNumerator: 50.0,
+                    andDenominator: 10.0))
+
+// NESTED Functions and Scope:
+/*
+Cool swifty feature: you can nest functions within each other!
+This is useful when: 
+- you want to limit scope
+*/
+
+func areaOfTriangle(withBase base: Double, andHeight height: Double) -> Double {
+    let numerator = base * height
+    
+    func divide() -> Double { // whoa, it is nested!! Function is only available within parent funciton's scope
+        return numerator / 2
+    }
+    
+    return divide()
+}
+areaOfTriangle(withBase: 3.0, andHeight: 5.0)
+
+// MULTIPLE returns: 
+/*
+Funcitons can return more than one value thanks to tuples.
+*/
+
+func sortEvenOdd(numbers: [Int]) -> (evens: [Int], odds: [Int]) { // return two parameters
+    var evens = [Int]()
+    var odds = [Int]()
+    for number in numbers {
+        if number % 2 == 0 {
+            evens.append(number)
+        } else {
+            odds.append(number)
+        }
+    }
+    return (evens, odds)
+}
+let bunchOfNumbers = [7, 23, 5, 2, 11, 45, 74, 91, 21, 4, 8, 16]
+let theSortedNumbers = sortEvenOdd(bunchOfNumbers) // assign constant to hold sorted numbers
+print("the even numbers are \(theSortedNumbers.evens), the odd numbers are \(theSortedNumbers.odds).") // notice string interpolation with tuple, you can access members by name if they are defined (ie: evens, odds). 
+
+// OPTIONAL returns: 
+/*
+- Sometimes you want a function to return an optional. 
+- ie: you want to return a person's name, but only have their first name saved
+*/
+
+func grabMiddleName(name: (String, String?, String)) -> String? {
+    return name.1 // second element in string, tuple is 0 indexed
+}
+let middleName = grabMiddleName(("Matt", nil, "Smith"))
+
+if let theName = middleName {
+    print(theName)
+}
+
+// EARLY EXIT from a function: 
+/*
+Guard Statements: 
+- execute code depending on a Boolean value
+- used to exit from a function if a condition is not met
+- these will protect your code frmo running under improper conditions
+*/
+
+func greetByMiddleName(name: (first: String, middle: String?, last: String)) {
+    guard let middleName = name.middle else { // guard called here if there is no middle name
+        print("hey there!")
+        return
+    }
+    print("hey \(middleName)!")
+}
+greetByMiddleName(("Matt", "Tom", "Smith"))
+
+// FUNCTION TYPES: 
+/*
+- useful because you can assign them to variables
+- function types are made up of the function's parameter and retun type
+- if a function has no argument or return it has the following type: () -> ()
+*/
+let evenOddFunction: ([Int]) -> ([Int], [Int]) = sortEvenOdd // created constant named "evenOddFunction" whose value is the function type
+
+// BRONZE CHALLENGE: 
+
+func greetByMiddleNameIfLessThanFourChars(name: (first: String, middle: String?, last: String)) {
+    guard let middleName = name.middle else { // guard called here if there is no middle name
+            print("hey there!")
+            return
+    }
+    if name.middle?.characters.count <= 4 {
+        print("hey \(middleName)!")
+    }
+    else {
+        print("hello!")
+    }
+}
+greetByMiddleNameIfLessThanFourChars(("Matt", "Matthew", "Smith"))
+
+// SILVER CHALLENGE:
+// build a bean sifter!!
+
+var groceryList = ["green beans", "milk", "black beans", "pinto beans", "apples", "cheese"]
+
+func beanSifter(groceries: [String]) -> (beans: [String], notBeans: [String]) {
+    var beans = [String]()
+    var notBeans = [String]()
+    
+    for grocery in groceries {
+        if grocery.containsString("beans") {
+            beans.append(grocery)
+        }
+        else if !grocery.containsString("beans") {
+            notBeans.append(grocery)
+        }
+    }
+    return (beans, notBeans)
+}
+beanSifter(groceryList) 
+
 
 
 
