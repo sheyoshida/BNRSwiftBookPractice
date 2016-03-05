@@ -983,9 +983,41 @@ func beanSifter(groceries: [String]) -> (beans: [String], notBeans: [String]) {
 beanSifter(groceryList) 
 
 
+// CLOSURES: 
+/*
+Closures are discrete bundles of functionality that can be used in your application to accomplish specific tasks. 
+- functions are a special case of closures, think of a function as a named closure
+- closures have a more compact and lightweight syntax, you can write a function-like construct without giving it a name and declaration
+- closures are easy to pass around in function arguments and returns
+*/
 
+var volunteerCounts = [1, 3, 40, 32, 2, 53, 77, 13]
 
+func sortAscending(i: Int, j: Int) -> Bool {
+return i < j
+}
+let volunteersSorted = volunteerCounts.sort(sortAscending)
 
+// closure expression syntax:
+/*
+- you write closures inside of the {}
+- the closures parameters are inside of the parenthesis immediately after the opening brace
+- return type comes after parameters and uses regular syntax
+- keyword "in" is used to separate the slocure's parameters and return type from statements inside of body
+
+{(parameters) -> return type in 
+    // code
+}
+*/
+
+// so this would be the refactored version of the above: 
+let volunteerSorted = volunteerCounts.sort({ // this is the closure!
+    (i: Int, j: Int) -> Bool in
+    return i < j
+    })
+
+// this can be further refactored: 
+let volunSorted = volunteerCounts.sort({ i, j in i < j })
 
 
 
