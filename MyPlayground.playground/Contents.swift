@@ -929,7 +929,8 @@ Guard Statements:
 */
 
 func greetByMiddleName(name: (first: String, middle: String?, last: String)) {
-    guard let middleName = name.middle else { // guard called here if there is no middle name
+    guard let middleName = name.middle
+        else { // guard called here if there is no middle name
         print("hey there!")
         return
     }
@@ -1019,7 +1020,27 @@ let volunteerSorted = volunteerCounts.sort({ // this is the closure!
 // this can be further refactored: 
 let volunSorted = volunteerCounts.sort({ i, j in i < j })
 
+// and refactored again:
+/*
+The compiler knows that sort(_:) takes a closure that takes two paramaters that are of the same type.
+You can refer to the argument values in order with $0, $1, $2, etc.
+This way, you do not need to explicitly declare parameters.
+*/
+let volSorted = volunteerCounts.sort({ $0 < $1 }) // new shorthand syntax!
 
+// you can simplify this again:
+let volSort = volunteerCounts.sort { $0 < $1 }
+
+
+
+// Functions As Return Types: 
+/*
+Remember how ever function has a return type? 
+A function type defines a function/closure's parameter and return type. 
+
+ie: a function that takes a string argument and returns a string has the type of: 
+(String) -> Int
+*/
 
 
 
