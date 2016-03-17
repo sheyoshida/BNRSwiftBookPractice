@@ -1038,9 +1038,78 @@ let volSort = volunteerCounts.sort { $0 < $1 }
 Remember how ever function has a return type? 
 A function type defines a function/closure's parameter and return type. 
 
-ie: a function that takes a string argument and returns a string has the type of: 
+ie: a function that takes a string argument and returns an int has the type of:
 (String) -> Int
+
+In Swift, functions are "first class objects" which means that functions can return other functions as their return type:
 */
+
+func makeTownGrand() -> (Int, Int) -> Int {
+    func buildRoads(lightsToAdd: Int, toLights: Int) -> Int {
+        return toLights + lightsToAdd
+    }
+    return buildRoads
+}
+
+let townPlan = makeTownGrand()
+var stopLights = 4
+stopLights = townPlan(4, stopLights)
+print("My town has \(stopLights) stoplights.")
+
+
+// Functions As Arguments:
+/*
+Functions can also serve as arguments to other functions.
+*/
+
+func makeTownGrander(budget: Int, condition: Int -> Bool) -> ((Int, Int) -> Int)? {
+    if condition(budget) {
+        func buildRoads(lightsToAdd: Int, toLights: Int) -> Int {
+            return toLights + lightsToAdd
+        }
+        return buildRoads
+    } else {
+        return nil
+    }
+}
+
+func evaluateBudget(budget: Int) -> Bool {
+    return budget > 10000
+}
+
+var stopLight = 4
+
+if let townPlan = makeTownGrander(1000, condition: evaluateBudget) {
+    stopLight = townPlan(4, stopLight)
+}
+
+if let newTownPlan = makeTownGrander(10500, condition: evaluateBudget) {
+    stopLight = newTownPlan(4, stopLight)
+}
+
+print("My town has \(stopLight) stoplights.")
+
+
+// Closures Capture Values: 
+/*
+Closures and functions can keep track of internal information encapsulated by a variable definied in their enclosing scope. To visualize this, create a function called "growthTracker" that shows the town's pupilation growth.
+*/
+
+func makeGrowthTracker(forGrowth growth: Int) -> () -> Int {
+    var totalGrowth = 0
+    func growthTracker() -> Int {
+        totalGrowth += growth
+        return totalGrowth
+    }
+    return growthTracker
+}
+var currentPopulation = 5422
+let growBy500 = makeGrowthTracker(forGrowth: 500)
+growBy500()
+growBy500()
+growBy500()
+currentPopulation += growBy500() // check total population
+
 
 
 
