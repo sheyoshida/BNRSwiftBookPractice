@@ -41,7 +41,7 @@ if population < 10000 {
 }
 print(message)
 
-if !hasPostOffice { // is no true
+if !hasPostOffice { // is not true
     print("where do we buy stamps?")
 }
 
@@ -85,7 +85,7 @@ print("the minimum value for a 8-bit integer is \(Int8.min).")
 // you can create a + integer by using UInt (ie: NSUInteger)
 
 print("the maximum value for a UInt integer is \(UInt.max).") // Unsigned (+ whole numbers or 0, no negative numbers allowed!)
-print("the minimum value for a UInt integer is \(UInt.max).") // same value as max!
+print("the minimum value for a UInt integer is \(UInt.min).") // same value as max!
 
 // BEST PRACTICE: use Int for all integer uses (including counts) unless an "unsigned integer" (no negative values) is required by the algorithm or code you are writing.
 
@@ -152,8 +152,8 @@ let d3 = d1 + d2 + Double(f1) // convert it!
 
 // when an if/else statement gets complex, it is good practice to use a switch statement.
 
-var statusCode: Int = 405
-var errorString: String = "The request failed with the error:" // default statement for CONTROL TRANSFER STATEMENT / FALLTHROUGH
+var statusCode: Int = 404
+var errorString: String = "The request failed with the error: " // default statement for CONTROL TRANSFER STATEMENT / FALLTHROUGH
 
 switch statusCode {
 //case 400:
@@ -169,7 +169,7 @@ switch statusCode {
 
 // refactored code:
 case 400, 401, 403, 404:
-errorString = "there was something wrong with the request." // append string
+errorString += "there was something wrong with the request." // append string
 fallthrough // use fallthrough keyword...
 default:
     errorString += " please review the request and try again." // append string
@@ -349,10 +349,9 @@ var spaceDemonsDestroyed = 0
 // Challenge: 
 // print even numbers up to 100 five times.
 
-var chickens = 0
 var count = 10
 
-for var i = 0; i <= count; i++ {
+for var i = 1; i <= count; i++ {
     for var j = 1; j <= 5; j++ {
         if i % 2 == 0 {
             print(i)
@@ -388,7 +387,7 @@ for scalar in playground.unicodeScalars {
 let fromStart = playground.startIndex
 let toPosition = 4 // the first position is 0
 let end = fromStart.advancedBy(toPosition)
-let fifthCharacter = playground[end] // 0 = fifth char of "hello"
+let fifthCharacter = playground[end] // o = fifth char of "hello"
 let range = fromStart...end
 let firstFive = playground[range]
 
@@ -1112,6 +1111,30 @@ currentPopulation += growBy500() // check total population
 
 
 
+// GENERIC types + STACKS: 
+
+struct genericStack <Element> { // angled brackets specify that any type can be passed in
+    var items = [Element]()
+    mutating func push(item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+    mutating func peek() -> Element? { // optional added as the stack may be empty
+        return (items.last)
+    }
+}
+
+var stack = genericStack<String>() // create instance of genericStack
+stack.push("beans") // add item to top O(1)
+stack.push("cheese")
+stack.push("corn")
+stack.push("butter")
+
+stack.items // display items O(N)
+stack.pop() // remove item from top O(1)
+stack.peek() // peek at top item O(1)
 
 
 
