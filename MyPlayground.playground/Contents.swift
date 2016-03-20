@@ -1109,9 +1109,58 @@ growBy500()
 growBy500()
 currentPopulation += growBy500() // check total population
 
+// Closures Are Reference Types: 
+/*
+- closures are reference types - meaning when you assign a function to a constant or variable, you are actually setting that constant or variable to *point to* the function. You are not creating a distinct copy of that function. Any information captured by the function's scope will be changed if you call the function via a new constant or variable.
+*/
+
+// Higher-Order Functions: 
+/*
+Higher order functions take at least one function as input. ie: sort(_:) others include map(_:), filter(_:) and reduce(_:combine:)
+*/
+
+// MAP(_:)
+/*
+- function that can transform an array's contents ie: you map an array from one value to another and put these values into a new array.
+*/
+
+let precinctPupulations = [1244, 2121, 2157]
+let projectedPopulation = precinctPupulations.map {
+    (population: Int) -> Int in
+    return population * 2
+}
+projectedPopulation // new array
+
+// FILTER(_:)
+/*
+- can be called on an array, just like map(_:)
+- it also takes a closure expression as an argument
+- purpose is to filter an array based oupon criteria
+- resulting array contains value of original array that passed the test
+*/
+
+let bigProjections = projectedPopulation.filter {
+    (projection: Int) -> Bool in
+    return projection > 4000
+}
+bigProjections
+
+// REDUCE(_:COMBINE:)
+/*
+- create estimate from array ie: reduce values to a single value
+*/
+
+let totalProjection = projectedPopulation.reduce(0) {
+    (accumulatedProjection: Int, precinctProjection: Int) -> Int in
+    return accumulatedProjection + precinctProjection
+}
+totalProjection
+
+// first argument referes to an initial amount that can be added at the outset. 
+// second argument is a closure that defines how the values inside the collection should be combined.
 
 
-// GENERIC types + STACKS: 
+// GENERIC types + STACKS:
 
 struct genericStack <Element> { // angled brackets specify that any type can be passed in
     var items = [Element]()
