@@ -1186,6 +1186,155 @@ stack.pop() // remove item from top O(1)
 stack.peek() // peek at top item O(1)
 
 
+// ENUMERATIONS: 
+/*
+- enums allow you to create instances that are only one of a predefined list of cases
+- define with "enum" keyword followed by name of enumeration
+- body must contain at least one case statement that declares possible values
+- types start with a CAPITAL letter by convention
+- enums in C or c++ are int types, each case is ordered numerically: 0, 1, 2, 3...
+
+*/
+
+enum TextAlignment: Int {
+    case Left
+    case Right
+    case Center
+    case Justify
+}
+
+var alignment = TextAlignment.Left
+alignment = .Right
+
+if alignment == .Right {
+    print("we should re-align the text.")
+}
+
+// but TYPICALLY, switch statements are used to handle enum values! Use Switch to print the statement in a human readable way: 
+
+switch alignment {
+case .Left:
+    print("left aligned")
+case .Right:
+    print("right aligned")
+case .Center:
+    print("center aligned")
+case .Justify:
+    print("justify aligned")
+}
+
+// The benefit of using an enum + switch is that you do not necessarily require a default case. If you have included a case for each condition in the enum, the compiler knows what to check!
+// Best Practice: avoid setting a default as it may cause errors if you add cases to your enum later on.
+
+// if you set an int enum value, you can access the rawValue (number) like this:
+print("left has a raw value \(TextAlignment.Left.rawValue)") // 0
+print("right has a raw value \(TextAlignment.Right.rawValue)") // 1
+
+// you can also make your own raw values:
+//enum TextAlignment: Int {
+//    case Left = 20
+//    case Right = 30
+//    case Center = 40
+//    case Justify = 50
+//}
+
+// you can also convert raw value number to an enum type... 
+/*
+let myRawValue = 20
+if let myAlignment = textAlignment(rawValue: myRawValue) {
+print("successfully converted \(myRawValue) into a textAllignment") // pass
+} else {
+print("\(myRawValue) has no corresponding textAlignment case") // fail
+}
+*/
+
+// you can create Enums with other types too...
+
+enum Languages: String {
+    case Swift = "Swift"
+    case ObjectiveC = "Objective-C"
+    case C // will return string that is equal to name
+    case Cpp = "C++" // modify string to more accurately reflect name
+    case Java
+}
+
+let myFavoriteLanguage = Languages.Swift
+print("My favorite programming language is \(myFavoriteLanguage.rawValue)")
+
+// METHODS: 
+/*
+- method is a function that is associated witha type
+- methods can be associated with classes AND enums
+*/
+
+enum LightBulb {
+    case On
+    case Off
+
+func surfaceTempForAmbientTemp(ambient: Double) -> Double { // you can add function INSIDE of enum! We would say that we are calling a "method on Lightbulb"
+    switch self {
+    case .On:
+        return ambient + 150.0
+    case .Off:
+        return ambient
+        }
+    }
+    
+    mutating func toggle() {
+    switch self { // you can not assign self inside a method, so we need to mark it as a "mutating" method...
+    case .On:
+        self = .Off
+    case .Off:
+        self = .On
+        }
+    }
+    
+}
+
+var bulb = LightBulb.On // create instance of LightBulb
+let ambientTemperature = 77.0
+
+bulb.toggle()
+bulb.toggle()
+var bulbTemperature = bulb.surfaceTempForAmbientTemp(ambientTemperature) // pass into function
+print("the bulb's temp is \(bulbTemperature)")
+
+// Associated Values: 
+/*
+- the previous enum examples define static cases
+- associated values allow you to attach data to instances of an enumeration
+*/
+
+enum ShapeDimensions {
+    case Point // no associated value
+    case Square(Double) // length of one side x 4
+    case Rectangle(width: Double, height: Double) // width x height
+    
+    func area() -> Double { // add method to enum
+        switch self {
+        case .Point:
+            return 0
+        case let .Square(side):
+            return side * side
+        case let .Rectangle(width: w, height: h):
+            return w * h
+        }
+    }
+}
+
+var squareShape = ShapeDimensions.Square(10.0)
+var rectangleShape = ShapeDimensions.Rectangle(width: 5.0, height: 10.0)
+var pointShape = ShapeDimensions.Point
+
+print("square's area = \(squareShape.area())")
+print("rectangle's area = \(rectangleShape.area())")
+print("point's area = \(pointShape.area())")
+
+
+
+
+
+
 
 
 
