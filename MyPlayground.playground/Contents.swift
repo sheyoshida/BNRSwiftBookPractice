@@ -1310,6 +1310,17 @@ enum ShapeDimensions {
     case Square(Double) // length of one side x 4
     case Rectangle(width: Double, height: Double) // width x height
     
+    func perimeter() -> Double {
+        switch self {
+        case .Point:
+            return 0
+        case let .Square(side):
+            return side * 4
+        case let .Rectangle(width: w, height: h):
+            return (w + h) * 2
+        }
+    }
+    
     func area() -> Double { // add method to enum
         switch self {
         case .Point:
@@ -1329,7 +1340,10 @@ var pointShape = ShapeDimensions.Point
 print("square's area = \(squareShape.area())")
 print("rectangle's area = \(rectangleShape.area())")
 print("point's area = \(pointShape.area())")
+print("square's perimeter = \(squareShape.perimeter())")
+print("rectangle's perimeter = \(rectangleShape.perimeter())")
 
+// Recursive Enumerations:
 
 
 
