@@ -1345,6 +1345,21 @@ print("rectangle's perimeter = \(rectangleShape.perimeter())")
 
 // Recursive Enumerations:
 
+enum FamilyTree {
+    case NoKnownParents
+    indirect case OneKnownParent(name: String, ancestors: FamilyTree) // note indirect keyword for recursive cases...
+    indirect case TwoKnownParents(fatherName: String, fatherAncestors: FamilyTree,
+                         motherName: String, motherAncestors: FamilyTree)
+}
+
+
+/*
+Indirect: since the enum will be called recursively, memory needs are unknown so Swift creates a layer of indirection. This instrycts the compiler to store the enum's data behind a pointer. The compiler now knows to store a pointer to the associated data, putting the data somewhere else in the memory, rather than making the instance of Family Tree big enough to hold the data.
+*/
+
+let fredAncestors = FamilyTree.TwoKnownParents(fatherName: "Fred Senior", fatherAncestors: .OneKnownParent(name: "Grandma Beth", ancestors: .NoKnownParents), motherName: "Marsha", motherAncestors: .NoKnownParents)
+
+
 
 
 
