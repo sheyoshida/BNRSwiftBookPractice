@@ -1360,6 +1360,63 @@ Indirect: since the enum will be called recursively, memory needs are unknown so
 let fredAncestors = FamilyTree.TwoKnownParents(fatherName: "Fred Senior", fatherAncestors: .OneKnownParent(name: "Grandma Beth", ancestors: .NoKnownParents), motherName: "Marsha", motherAncestors: .NoKnownParents)
 
 
+// Function Currying: 
+
+// original function:
+func greetName(name: String, withGreeting greeting: String) -> String {
+    
+    return "\(greeting) \(name)"
+}
+let personalGreeting = greetName("Steve", withGreeting: "Hello,")
+
+// now with currying: 
+func greetingForName(name: String) -> (String) -> String {
+    func greeting(greeting: String) -> String {
+        return "\(greeting) \(name)"
+    }
+    return greeting
+}
+let greeterFunction = greetingForName("Matt")
+let theGreeting = greeterFunction("Salutations, ") // pass greeting to function
+print(theGreeting)
+
+// currying with concise Swifty syntax: 
+func greeting(greeting: String)(name: String) -> String {
+    return "\(greeting) \(name)"
+}
+let friendlyGreeting = greeting("Hello, ")
+let newGreeting = friendlyGreeting(name: "Shena")
+print(newGreeting)
+
+// Mutating: 
+
+struct Person {
+    var firstName = "William"
+    var lastName = "Murray"
+    
+    mutating func changeName(fn: String, ln: String) { // mutating
+        firstName = fn
+        lastName = ln
+    }
+}
+
+var p = Person()
+let changer = Person.changeName // assign to constant, this is a curried function but we are not calling the function... 
+changer(&p)("John", ln: "Goodman") // pass instance's reference to function with "&"
+
+// or: 
+p.changeName("Steve", ln: "Buscemi")
+p.firstName
+
+
+
+
+
+
+
+
+
+
 
 
 

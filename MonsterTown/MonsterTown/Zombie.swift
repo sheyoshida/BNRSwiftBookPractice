@@ -11,6 +11,12 @@ import Foundation
 class Zombie: Monster {
     var walksWithLimp = true
     
+    class func makeSpookyNoise() -> String { // class type keyword can only be called on type itself
+        let noise = "braaiiins..."
+        print("\(noise)")
+        return noise
+    }
+     
     final override func terrorizeTown() { // you can override superclass functions... final means it can not be altered later
         if town?.population > 10 {
             town?.changePopulation(-10)

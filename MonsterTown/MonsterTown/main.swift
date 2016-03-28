@@ -19,6 +19,7 @@ myTown.changePopulation(500)
 let fredTheZombie = Zombie()
 fredTheZombie.town = myTown
 fredTheZombie.terrorizeTown()
+
 fredTheZombie.town?.printTownDescription()
 fredTheZombie.changeName("Fred The Zombie", walksWithLimp: false)
 
@@ -28,3 +29,5 @@ countDracula.terrorizeTown()
 countDracula.terrorizeTown()
 countDracula.town?.printTownDescription()
 print(countDracula.vampireThralls)
+
+let spookyNoise = Zombie.makeSpookyNoise() // type method can only be called on type/class
