@@ -15,9 +15,16 @@ import Foundation
 
 var myTown = Town()
 myTown.changePopulation(500)
-myTown.printTownDescription() // instance method
 
-let gm = Monster()
-gm.town = myTown
-gm.terrorizeTown()
+let fredTheZombie = Zombie()
+fredTheZombie.town = myTown
+fredTheZombie.terrorizeTown()
+fredTheZombie.town?.printTownDescription()
+fredTheZombie.changeName("Fred The Zombie", walksWithLimp: false)
 
+let countDracula = Vampire()
+countDracula.town = myTown
+countDracula.terrorizeTown()
+countDracula.terrorizeTown()
+countDracula.town?.printTownDescription()
+print(countDracula.vampireThralls)

@@ -11,7 +11,8 @@ import Foundation
 /*
 CLASSES:
 - Like structs, classes are used to model related data under a common type.
-- Classes have inheritance (subclasses), structs do not...
+- Classes have inheritance (ie: subclasses), structs do not... 
+- You can also override (alter) superclass methods from a subclass.
 
 */
 
@@ -26,15 +27,9 @@ class Monster {
             print("\(name) hasn't found a town to terrorize yet...")
         }
     }
-
 }
 
-class Zombie: Monster {
-    var walksWithLimp = true
-    
-    override func terrorizeTown() { // you can override superclass functions... 
-        town?.changePopulation(-10)
-        super.terrorizeTown()
-    }
-    
-}
+
+
+
+
