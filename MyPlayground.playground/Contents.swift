@@ -1361,6 +1361,11 @@ let fredAncestors = FamilyTree.TwoKnownParents(fatherName: "Fred Senior", father
 
 
 // Function Currying: 
+/*
+- allows you to rewrite an existing function that takes multiple parameters as a new function that takes one parameter and returns another function. 
+- involves nesting functions. 
+- a "curried" function allows you to bind values to a function's arguments before you call it.  This is similar to supplying default values, but more dynamic.
+*/
 
 // original function:
 func greetName(name: String, withGreeting greeting: String) -> String {
@@ -1389,12 +1394,13 @@ let newGreeting = friendlyGreeting(name: "Shena")
 print(newGreeting)
 
 // Mutating: 
+// mutating allows you to modify a struct or enum...
 
 struct Person {
     var firstName = "William"
     var lastName = "Murray"
     
-    mutating func changeName(fn: String, ln: String) { // mutating
+    mutating func changeName(fn: String, ln: String) { // modify a struct or enum with "mutating"
         firstName = fn
         lastName = ln
     }
@@ -1407,6 +1413,8 @@ changer(&p)("John", ln: "Goodman") // pass instance's reference to function with
 // or: 
 p.changeName("Steve", ln: "Buscemi")
 p.firstName
+
+
 
 
 
