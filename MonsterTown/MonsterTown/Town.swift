@@ -17,8 +17,28 @@ STRUCTS:
 */
 
 struct Town {
-    var population = 5422 // properties
+    let region = "South" // read only property
+    var population = 5422 // mutable properties
     var numberOfStoplights = 4
+    
+    
+    enum Size { // can not be accessed outside of Town
+        case Small
+        case Medium
+        case Large
+    }
+    
+    lazy var townSize: Size = { // lazy stores value that will not be known until after instance is created
+        switch self.population {
+        case 0...10000:
+            return Size.Small
+        case 10001...100000:
+            return Size.Medium
+        default:
+            return Size.Large
+        }
+    }()
+    
     
     // you can add instance methods to your struct: 
     func printTownDescription() {
