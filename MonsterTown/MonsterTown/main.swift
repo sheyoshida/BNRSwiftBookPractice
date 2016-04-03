@@ -14,7 +14,11 @@ import Foundation
 
 
 var myTown = Town()
-myTown.changePopulation(500)
+let ts = myTown.townSize
+print(ts)
+
+myTown.changePopulation(1000000) // note: lazy property is not updated after it is calculated the first time
+print("Size: \(myTown.townSize); population: \(myTown.population)")
 
 let fredTheZombie = Zombie()
 fredTheZombie.town = myTown
@@ -31,3 +35,8 @@ countDracula.town?.printTownDescription()
 print(countDracula.vampireThralls)
 
 let spookyNoise = Zombie.makeSpookyNoise() // type method can only be called on type/class
+
+// test out getters and setters 
+print("Victim pool: \(fredTheZombie.victimPool)")
+fredTheZombie.victimPool = 500 // access the setter...
+print("Victim pool: \(fredTheZombie.victimPool); population: \(fredTheZombie.town?.population)")

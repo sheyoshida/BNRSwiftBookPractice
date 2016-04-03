@@ -28,19 +28,36 @@ struct Town {
         case Large
     }
     
-    lazy var townSize: Size = { // lazy stores value that will not be known until after instance is created
-        switch self.population {
-        case 0...10000:
-            return Size.Small
-        case 10001...100000:
-            return Size.Medium
-        default:
-            return Size.Large
+//    lazy var townSize: Size = { // lazy stores value that will not be known until after instance is created
+//        switch self.population { // self is used to imply we are using the instance's properties
+//        case 0...10000:
+//            return Size.Small
+//        case 10001...100000:
+//            return Size.Medium
+//        default:
+//            return Size.Large
+//        }
+//    }() // this statement is also a closure...
+    
+// NOTE: Lazy properties do not recalculate values once they have been set the first time... So for this case, we use a Computed Property:
+
+    var townSize: Size {
+        get { // "read only" because there is no setter in this function
+            switch self.population { // self is used to imply we are using the instance's properties
+            case 0...10000:
+                return Size.Small
+            case 10001...100000:
+                return Size.Medium
+            default:
+                return Size.Large
+            }
         }
-    }()
+    }
+
+
     
     
-    // you can add instance methods to your struct: 
+    // you can add instance methods to your struct:
     func printTownDescription() {
         print("population: \(population); number of stoplights: \(numberOfStoplights)")
     }
