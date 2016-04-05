@@ -39,4 +39,10 @@ let spookyNoise = Zombie.makeSpookyNoise() // type method can only be called on 
 // test out getters and setters 
 print("Victim pool: \(fredTheZombie.victimPool)")
 fredTheZombie.victimPool = 500 // access the setter...
-print("Victim pool: \(fredTheZombie.victimPool); population: \(fredTheZombie.town?.population)")
+print("Victim pool: \(fredTheZombie.victimPool)")
+
+
+
+
+
+

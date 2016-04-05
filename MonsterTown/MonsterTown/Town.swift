@@ -17,10 +17,15 @@ STRUCTS:
 */
 
 struct Town {
-    let region = "South" // read only property
-    var population = 5422 // mutable properties
+    // let region = "South" // read only property (can not be changed thanks to "let")
+    static let region = "South" // stored "type property" has preset default value, no initializers, can not be overrided from subclass, if setting type property in class use "class" keyword instead. 
     var numberOfStoplights = 4
-    
+
+    var population = 5422 {
+        didSet(oldPopulation) { // didSet = property observer - used to track changes
+            print("The population has changed to \(population) from \(oldPopulation).")
+        }
+    }
     
     enum Size { // can not be accessed outside of Town
         case Small
@@ -53,9 +58,6 @@ struct Town {
             }
         }
     }
-
-
-    
     
     // you can add instance methods to your struct:
     func printTownDescription() {

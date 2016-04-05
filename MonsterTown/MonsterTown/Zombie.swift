@@ -10,6 +10,9 @@ import Foundation
 
 class Zombie: Monster {
     var walksWithLimp = true
+    class var spookyNoise: String {
+        return "braaiiins..."
+    }
     
     class func makeSpookyNoise() -> String { // class type keyword can only be called on type itself
         let noise = "braaiiins..."
