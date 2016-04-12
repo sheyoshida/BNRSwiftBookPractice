@@ -47,8 +47,7 @@ if !hasPostOffice { // is not true
 
 // ternary operator a ? b : c
 // this is similar to an if else statement
-message = population < 1000 ? "\(population) is small town!" :
-                                "\(population) is pretty big!"
+message = population < 1000 ? "\(population) is small town!" : "\(population) is pretty big!"
 
 // else if
 if population < 10000 {
@@ -69,16 +68,16 @@ print("the minimum Int value is \(Int.min).")
 
 // integers are stored in binary form with a fixed number of bits - a bit is a single 0 or 1. Each bit position represents a power of 2. A regular Int is a 64-bit integer, meaning it has 2^64 possible values. Earlier devices were made with a 32-bit architecture (2^32). The compiler determines the appropriate size for int wen it builds your program.
 
-print("the maximum value for a 64-bit integer is \(Int64.max).")
+print("the maximum value for a 64-bit integer is \(Int64.max).") // 9,223,372,036,854,775,807 (nine sextillion)
 print("the minimum value for a 64-bit integer is \(Int64.min).")
 
-print("the maximum value for a 32-bit integer is \(Int32.max).")
+print("the maximum value for a 32-bit integer is \(Int32.max).") // 2,147,483,647 (two billion)
 print("the minimum value for a 32-bit integer is \(Int32.min).")
 
-print("the maximum value for a 16-bit integer is \(Int16.max).")
+print("the maximum value for a 16-bit integer is \(Int16.max).") // 32,767
 print("the minimum value for a 16-bit integer is \(Int16.min).")
 
-print("the maximum value for a 8-bit integer is \(Int8.max).")
+print("the maximum value for a 8-bit integer is \(Int8.max).") // 127
 print("the minimum value for a 8-bit integer is \(Int8.min).")
 
 // all of these types are "signed" - meaning they can be either + or - (ie: NSInteger)
@@ -117,10 +116,10 @@ print(11 % 3) // 2 is the remainder of this equation
 // operator shorthand
 
 var x = 10
-x++
+x += 1 // x++ was removed in Swift 2.2
 print("x has been incremented to \(x)")
 
-x--
+x -= 1 // x-- was removed in Swift 2.2
 print("x has been deccremented to \(x)")
 
 x += 10 // x = x + 10, you can also use -=, *=, /=
