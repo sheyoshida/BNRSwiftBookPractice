@@ -122,7 +122,7 @@ print("x has been incremented to \(x)")
 x -= 1 // x-- was removed in Swift 2.2
 print("x has been deccremented to \(x)")
 
-x += 10 // x = x + 10, you can also use -=, *=, /=
+x += 10 // x = x + 10 you can also use -=, *=, /=
 
 // overflow operators
 
@@ -171,7 +171,7 @@ case 400, 401, 403, 404:
 errorString += "there was something wrong with the request." // append string
 fallthrough // use fallthrough keyword...
 default:
-    errorString += " please review the request and try again." // append string
+    errorString += " Please review the request and try again." // append string
 }
 
 // VERY COOL NON BOOK DISCOVERY!!! You can perform these functions on SETS.
@@ -274,7 +274,7 @@ case let q4 where (point.x < 0) && (point.y < 0):
 var myFirstInt: Int = 0
 
 for i in 1...5 { // from 1 - 5
-    ++myFirstInt // add 1 to each iteration
+    myFirstInt += 1 // add 1 to each iteration
     print("myFirstInt equals \(myFirstInt) at iteration \(i)") // 1, 2, 3, 4, 5
 }
 
@@ -291,20 +291,20 @@ for i in 1...10 { // this method is less elegant as there are more lines of code
     }
 }
 
-// Swift also supports the classic for loop:
-for var i = 1; i < 10; i++ {
-    if i % 3 == 0 { // and the nested for loop
-        print(i)
-    }
-}
+// BUT... Swift 2.2 no longer supports the classic for loop:
+//for var i = 1; i < 10; i++ {
+//    if i % 3 == 0 { // and the nested for loop
+//        print(i)
+//    }
+//}
 
 // the WHILE loop will continue as long as a certain condition is met.
 // while loops are best for circumstances where the number of iterations the loop will pass through is unknown.
 var i = 1
 while i < 6 {
-    ++myFirstInt
+    myFirstInt += 1
     print(myFirstInt)
-    ++i
+    i += 1
 }
 
 // Repeat While Loops
@@ -349,11 +349,10 @@ var spaceDemonsDestroyed = 0
 // print even numbers up to 100 five times.
 
 var count = 10
-
-for var i = 1; i <= count; i++ {
-    for var j = 1; j <= 5; j++ {
+for i in 1...100 {
+    for j in 1...5 { // create second loop to print variable 5 times
         if i % 2 == 0 {
-            print(i)
+//            print(i)
         }
     }
 }
