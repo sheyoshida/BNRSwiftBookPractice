@@ -393,7 +393,7 @@ let firstFive = playground[range]
 // CODING CHALLENGE: FizzBuzz / CracklePop...
 
 // My first coding language is Objective C and I'm learning to write in Swift, so my first instinct was to use the traditional for loop:
-for i = 1; i <= 100; i++ {
+for i in 1...100 {
     if (i % 3 == 0) && (i % 5 == 0) {
         print("CracklePop")
     } else {
@@ -537,12 +537,12 @@ toDoList.append("Watch Lord of the Rings trilogy")
 
 // manipulating arrays:
 
-toDoList.removeAtIndex(5) // remove third element
-toDoList[3] // access items like this
+toDoList.removeAtIndex(5) // remove 6th element
+toDoList[3] // access 4th item
 toDoList.insert("Toboggan across Alaska", atIndex: 2) // add at specific spot, everything else is pushed over
-print(toDoList.count) // find number of items in list
+toDoList
+print(toDoList.count) // find number of items in list (remember: the index is always count - 1)
 print(toDoList[0...2]) // print first 3 items
-
 
 // append existing string
 toDoList[2] += " and learn to dogsled"
@@ -639,7 +639,7 @@ var dict1: Dictionary<String, Double> = [:] // [:] = literal syntax
 var dict2 = Dictionary<String, Double>()
 var dict3: [String:Double] = [:]
 var dict4 = [String:Double]()
-// each of these yields a fully initialized instance of the Dictionary type
+// each of these yields a fully initialized instance of the Dictionary type + holds a string(key) and double(value)
 
 // Populating a dictionary: 
 var movieRatings = ["donnie darko": 4, "air bud 3": 5, "home alone": 4, "snowpiercer": 4, "wayne's world": 4, "merry christmas mr bean": 7]
@@ -694,7 +694,7 @@ movieRatings
 // looping
 /* 
 - use a "for in" loop with a swift dictionary
-- this mechanism breaks each entry yint oparts by providing temporary constants representing the key and value
+- this mechanism breaks each entry into parts by providing temporary constants representing the key and value
 - these constants re placed within a tuple that the for in loop can access inside of its body
 */
 
@@ -731,8 +731,8 @@ var canadianPlaces = ["BC": ["vancouver", "kamloops", "kelowna", "vernon", "vict
     "QC": ["montreal", "quebec"],
     "NS": ["halifax"]]
 
-for city  in canadianPlaces.keys {
-    print("welcome to beautiful \(city)!")
+for province in canadianPlaces.keys {
+    print("welcome to beautiful \(province)!")
 }
 
 // Sets: 
@@ -790,12 +790,12 @@ func printGreeting() { // no parameters
 func printPersonalGreeting(name: String) { // with an argument
     print("Hello \(name), welcome!")
 }
-printPersonalGreeting("Shena")
+//printPersonalGreeting("Shena")
 
 func divisionDescription(num: Double, den: Double) {
     print("\(num) divided by \(den) equals \(num / den).") // math inside of string
 }
-divisionDescription(9.0, den: 3.0)
+//divisionDescription(9.0, den: 3.0)
 
 // you can makeparameters more descriptive so that they appear when you call the function:
 
@@ -837,7 +837,7 @@ divisionDescriptionDefault(forNumerator: 10.0, andDenominator: 2.0, withPunctuat
 // IN-OUT parameters:
 /*
 - sometimes, you may wish to modify the value of an argument
-- in-out parameters allow a function's impact on a variable to live beyone the function's body
+- in-out parameters allow a function's impact on a variable to live beyond the function's body
 BUT:
 - in-out functions can NOT have default values.
 - in-out functions can not bave variadic parameters...
@@ -847,7 +847,7 @@ BUT:
 var myError = "the request failed:"
 func appendErrorCode(code: Int, inout toErrorString errorString: String) { // inout parameter
     if code == 400 {
-        errorString += " bad request."
+        errorString += " bad request." // thanks to inout, you can modify your original argument 
     }
 }
 appendErrorCode(400, toErrorString: &myError) // & = inout indicator, implies that the variable will be modified by the function
