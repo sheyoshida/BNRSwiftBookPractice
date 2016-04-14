@@ -847,7 +847,7 @@ BUT:
 var myError = "the request failed:"
 func appendErrorCode(code: Int, inout toErrorString errorString: String) { // inout parameter
     if code == 400 {
-        errorString += " bad request." // thanks to inout, you can modify your original argument 
+        errorString += " bad request." // thanks to inout, you can modify your original argument
     }
 }
 appendErrorCode(400, toErrorString: &myError) // & = inout indicator, implies that the variable will be modified by the function
@@ -954,10 +954,10 @@ func greetByMiddleNameIfLessThanFourChars(name: (first: String, middle: String?,
         print("hey \(middleName)!")
     }
     else {
-        print("hello!")
+        print("hello \(name.first)!")
     }
 }
-greetByMiddleNameIfLessThanFourChars(("Matt", "Matthew", "Smith"))
+greetByMiddleNameIfLessThanFourChars(("Jerry", "Tom", "Smith"))
 
 // SILVER CHALLENGE:
 // build a bean sifter!!
@@ -1032,7 +1032,7 @@ let volSort = volunteerCounts.sort { $0 < $1 }
 
 // Functions As Return Types: 
 /*
-Remember how ever function has a return type? 
+Remember how every function has a return type?
 A function type defines a function/closure's parameter and return type. 
 
 ie: a function that takes a string argument and returns an int has the type of:
