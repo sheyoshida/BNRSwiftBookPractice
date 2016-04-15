@@ -1073,6 +1073,7 @@ func makeTownGrander(budget: Int, condition: Int -> Bool) -> ((Int, Int) -> Int)
 func evaluateBudget(budget: Int) -> Bool {
     return budget > 10000
 }
+evaluateBudget(20)
 
 var stopLight = 4
 
@@ -1120,12 +1121,13 @@ Higher order functions take at least one function as input. ie: sort(_:) others 
 // MAP(_:)
 /*
 - function that can transform an array's contents ie: you map an array from one value to another and put these values into a new array.
+- because MAP is a higher order function, you provide it with another function that tells it how to transform the array's contents.
 */
 
 let precinctPupulations = [1244, 2121, 2157]
-let projectedPopulation = precinctPupulations.map {
+let projectedPopulation = precinctPupulations.map { // trailing closure syntax
     (population: Int) -> Int in
-    return population * 2
+    return population * 2 // multiplied each value in array by 2
 }
 projectedPopulation // new array
 
@@ -1133,13 +1135,13 @@ projectedPopulation // new array
 /*
 - can be called on an array, just like map(_:)
 - it also takes a closure expression as an argument
-- purpose is to filter an array based oupon criteria
+- purpose is to filter an array based upon criteria
 - resulting array contains value of original array that passed the test
 */
 
 let bigProjections = projectedPopulation.filter {
     (projection: Int) -> Bool in
-    return projection > 4000
+    return projection > 4100 // filter out all values > 4100
 }
 bigProjections
 
