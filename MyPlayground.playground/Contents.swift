@@ -1162,7 +1162,7 @@ totalProjection
 
 // GENERIC types + STACKS:
 
-struct genericStack <Element> { // angled brackets specify that any type can be passed in
+struct genericStack <Element> { // <Element> = any type can be passed in
     var items = [Element]()
     mutating func push(item: Element) {
         items.append(item)
@@ -1170,8 +1170,8 @@ struct genericStack <Element> { // angled brackets specify that any type can be 
     mutating func pop() -> Element {
         return items.removeLast()
     }
-    mutating func peek() -> Element? { // optional added as the stack may be empty
-        return (items.last)
+    func peek() -> Element? { // optional added as the stack may be empty
+    return items.last // mutating is unnecessary here as items are unchanged
     }
 }
 
@@ -1288,7 +1288,6 @@ func surfaceTempForAmbientTemp(ambient: Double) -> Double { // you can add funct
         self = .On
         }
     }
-    
 }
 
 var bulb = LightBulb.On // create instance of LightBulb
