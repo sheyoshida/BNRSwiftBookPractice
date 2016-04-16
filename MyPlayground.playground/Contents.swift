@@ -1280,8 +1280,8 @@ func surfaceTempForAmbientTemp(ambient: Double) -> Double { // you can add funct
         }
     }
     
-    mutating func toggle() {
-    switch self { // you can not assign self inside a method, so we need to mark it as a "mutating" method...
+    mutating func toggle() { // you can not assign self inside a method, mark it as a "mutating" method...
+    switch self {
     case .On:
         self = .Off
     case .Off:
@@ -1295,6 +1295,7 @@ let ambientTemperature = 77.0
 
 bulb.toggle()
 bulb.toggle()
+bulb.toggle()
 var bulbTemperature = bulb.surfaceTempForAmbientTemp(ambientTemperature) // pass into function
 print("the bulb's temp is \(bulbTemperature)")
 
@@ -1306,7 +1307,7 @@ print("the bulb's temp is \(bulbTemperature)")
 
 enum ShapeDimensions {
     case Point // no associated value
-    case Square(Double) // length of one side x 4
+    case Square(length: Double) // length of one side x 4
     case Rectangle(width: Double, height: Double) // width x height
     
     func perimeter() -> Double {
@@ -1332,7 +1333,7 @@ enum ShapeDimensions {
     }
 }
 
-var squareShape = ShapeDimensions.Square(10.0)
+var squareShape = ShapeDimensions.Square(length: 10.0)
 var rectangleShape = ShapeDimensions.Rectangle(width: 5.0, height: 10.0)
 var pointShape = ShapeDimensions.Point
 
@@ -1388,7 +1389,7 @@ print(theGreeting)
 func greeting(greeting: String)(name: String) -> String {
     return "\(greeting) \(name)"
 }
-let friendlyGreeting = greeting("Hello, ")
+let friendlyGreeting = greeting("Hello,")
 let newGreeting = friendlyGreeting(name: "Shena")
 print(newGreeting)
 
@@ -1412,6 +1413,22 @@ changer(&p)("John", ln: "Goodman") // pass instance's reference to function with
 // or: 
 p.changeName("Steve", ln: "Buscemi")
 p.firstName
+
+/*
+DIFFERENCE BETWEEN: 
+ 
+ class
+    - completely defines a primary actor in your object model, both its attributes and its interactions.
+ 
+ enum
+    - initialised by one of a set number of cases
+    - are completely defined by their case
+    - should always be valid instances of that case when instantiated
+    - ie: spring, summer, winter, fall or left, right, up, down or on, off
+ 
+ struct
+    - used when there is not a set number of valid instances (e.g. enum cases) and the struct also does not form a complete definition of an object, but rather an attribute of an object
+*/
 
 
 
