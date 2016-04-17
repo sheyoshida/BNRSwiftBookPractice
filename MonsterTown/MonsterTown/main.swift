@@ -41,8 +41,27 @@ print("Victim pool: \(fredTheZombie.victimPool)")
 fredTheZombie.victimPool = 500 // access the setter...
 print("Victim pool: \(fredTheZombie.victimPool)")
 
+// test static property: 
+if Zombie.isTerrifying {
+    print("run away!!")
+}
 
-
+/*
+ACCESS CONTROL:
+ 
+ Module: 
+ - unit of code that is distributed together (ie: uikit framework)
+ Source Files: 
+ - more discrete units that represent a single fiel and live within a single module
+ - it is good practice to definie a single type within a source file to keep your project organized
+ 
+ Public:
+ - entities are visible to all files in the module, or those that improt the module
+ Internal:
+ - internal access (is default) makes entries visible to all files in the same module
+ Private:
+ - private access makes entities visible only within their defining source file
+*/
 
 
 

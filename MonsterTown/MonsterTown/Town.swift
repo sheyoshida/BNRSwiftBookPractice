@@ -22,10 +22,16 @@ struct Town {
     var numberOfStoplights = 4
 
     var population = 5422 {
-        didSet(oldPopulation) { // didSet = property observer - used to track changes
+         didSet(oldPopulation) { // didSet = property observer - used to track changes
+            if population < oldPopulation {
             print("The population has changed to \(population) from \(oldPopulation).")
+            }
         }
     }
+    
+//    var theMayor: Mayor {
+//        
+//    }
     
     enum Size { // can not be accessed outside of Town
         case Small

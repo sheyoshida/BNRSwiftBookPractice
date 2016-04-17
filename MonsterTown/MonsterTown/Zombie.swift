@@ -9,8 +9,11 @@
 import Foundation
 
 class Zombie: Monster {
-    var walksWithLimp = true
-    class var spookyNoise: String {
+    
+    var walksWithLimp = true // computed property
+    private(set) var isFallingApart = false // access control = getter is internal (default) and setter is private
+    
+    override class var spookyNoise: String { // override superclass
         return "braaiiins..."
     }
     
@@ -21,10 +24,11 @@ class Zombie: Monster {
     }
      
     final override func terrorizeTown() { // you can override superclass functions... final means it can not be altered later
-        if town?.population > 10 {
+        if town?.population > 10 && !isFallingApart {
             town?.changePopulation(-10)
             super.terrorizeTown() // super is used to override or borrow functionality from a superclass.
         }
+
         
     }
     

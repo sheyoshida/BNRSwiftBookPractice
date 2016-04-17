@@ -17,6 +17,12 @@ CLASSES:
 */
 
 class Monster {
+    
+    static let isTerrifying = true // true for all instances of monster, including subclasses
+    
+    class var spookyNoise: String {
+        return "Grrr"
+    }
     var town: Town?
     var name = "Monster"
     

@@ -10,6 +10,7 @@
 		4D2E57DB1CA4D2F700EA0992 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E57DA1CA4D2F700EA0992 /* main.swift */; };
 		4D2E57E21CA4D4F500EA0992 /* Town.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E57E11CA4D4F500EA0992 /* Town.swift */; };
 		4D2E57E41CA4E0CD00EA0992 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E57E31CA4E0CD00EA0992 /* Monster.swift */; };
+		4D5B518A1CC31C2C00F6DA17 /* Mayor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5B51891CC31C2C00F6DA17 /* Mayor.swift */; };
 		4DCC5E041CA99432001BB748 /* Zombie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC5E031CA99432001BB748 /* Zombie.swift */; };
 		4DCC5E061CA996C3001BB748 /* Vampire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC5E051CA996C3001BB748 /* Vampire.swift */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		4D2E57DA1CA4D2F700EA0992 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		4D2E57E11CA4D4F500EA0992 /* Town.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Town.swift; sourceTree = "<group>"; };
 		4D2E57E31CA4E0CD00EA0992 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		4D5B51891CC31C2C00F6DA17 /* Mayor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mayor.swift; sourceTree = "<group>"; };
 		4DCC5E031CA99432001BB748 /* Zombie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zombie.swift; sourceTree = "<group>"; };
 		4DCC5E051CA996C3001BB748 /* Vampire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vampire.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				4D2E57E31CA4E0CD00EA0992 /* Monster.swift */,
 				4DCC5E031CA99432001BB748 /* Zombie.swift */,
 				4DCC5E051CA996C3001BB748 /* Vampire.swift */,
+				4D5B51891CC31C2C00F6DA17 /* Mayor.swift */,
 			);
 			path = MonsterTown;
 			sourceTree = "<group>";
@@ -133,6 +136,7 @@
 			files = (
 				4D2E57DB1CA4D2F700EA0992 /* main.swift in Sources */,
 				4D2E57E41CA4E0CD00EA0992 /* Monster.swift in Sources */,
+				4D5B518A1CC31C2C00F6DA17 /* Mayor.swift in Sources */,
 				4D2E57E21CA4D4F500EA0992 /* Town.swift in Sources */,
 				4DCC5E061CA996C3001BB748 /* Vampire.swift in Sources */,
 				4DCC5E041CA99432001BB748 /* Zombie.swift in Sources */,
