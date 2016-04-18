@@ -22,14 +22,14 @@ print(ts)
 myTown.changePopulation(1000000) // note: lazy property is not updated after it is calculated the first time
 print("Size: \(myTown.townSize); population: \(myTown.population)")
 
-let fredTheZombie = Zombie()
-fredTheZombie.town = myTown
-fredTheZombie.terrorizeTown()
+let fredTheZombie = Zombie(limp: false, fallingApart: false, town: myTown, monsterName: "Fred")
+//fredTheZombie.town = myTown
+//fredTheZombie.terrorizeTown()
 
 fredTheZombie.town?.printTownDescription()
 fredTheZombie.changeName("Fred The Zombie", walksWithLimp: false)
 
-let countDracula = Vampire()
+let countDracula = Vampire(town: myTown, monsterName: "Count Dracula")
 countDracula.town = myTown
 countDracula.terrorizeTown()
 countDracula.terrorizeTown()

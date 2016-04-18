@@ -10,19 +10,25 @@ import Foundation
 
 class Zombie: Monster {
     
-    var walksWithLimp = true // computed property
-    private(set) var isFallingApart = false // access control = getter is internal (default) and setter is private
+    var walksWithLimp: Bool
+    private(set) var isFallingApart: Bool // access control = getter is internal (default) and setter is private
     
     override class var spookyNoise: String { // override superclass
-        return "braaiiins..."
+        return "eat braaiiins..."
     }
     
     class func makeSpookyNoise() -> String { // class type keyword can only be called on type itself
-        let noise = "braaiiins..."
+        let noise = "oh braaiiins..."
         print("\(noise)")
         return noise
     }
-     
+    
+    init(limp: Bool, fallingApart: Bool, town: Town?, monsterName: String) {
+        walksWithLimp = limp
+        isFallingApart = fallingApart
+        super.init(town: town, monsterName: monsterName)
+    }
+    
     final override func terrorizeTown() { // you can override superclass functions... final means it can not be altered later
         if town?.population > 10 && !isFallingApart {
             town?.changePopulation(-10)
