@@ -13,7 +13,9 @@ We will define types and create instances of them in this file.
 import Foundation
 
 
-var myTown = Town()
+//var myTown = Town() // create instance of Town
+
+var myTown = Town(numberOfStoplights: 6, population: 10000) // initialized in town.swift
 let ts = myTown.townSize
 print(ts)
 

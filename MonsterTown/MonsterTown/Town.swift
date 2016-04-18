@@ -17,11 +17,16 @@ STRUCTS:
 */
 
 struct Town {
-    // let region = "South" // read only property (can not be changed thanks to "let")
-    static let region = "South" // stored "type property" has preset default value, no initializers, can not be overrided from subclass, if setting type property in class use "class" keyword instead. 
-    var numberOfStoplights = 4
+// let region = "South" // read only property (can not be changed thanks to "let")
+    
+// static let region = "South" // stored "type property" has preset default value, no initializers, can not be overrided from subclass, if setting type property in class use "class" keyword instead.
+    
+    let region: String
+    
+//  var numberOfStoplights = 4 // default value - overriden in main.swift
+    var numberOfStoplights: Int
 
-    var population = 5422 {
+    var population: Int {
          didSet(oldPopulation) { // didSet = property observer - used to track changes
             if population < oldPopulation {
             print("The population has changed to \(population) from \(oldPopulation).")
@@ -29,9 +34,18 @@ struct Town {
         }
     }
     
-//    var theMayor: Mayor {
-//        
-//    }
+    init(region: String, numberOfStoplights: Int, population: Int) { // custom memberwise initializer
+        self.region = region // if paramater name = property name, use self
+        self.numberOfStoplights = numberOfStoplights
+        self.population = population
+    }
+    
+    init(numberOfStoplights: Int, population: Int) { // initializer delegation
+        self.init(region: "N/A", numberOfStoplights: numberOfStoplights, population: population) // default region
+    }
+    
+
+    
     
     enum Size { // can not be accessed outside of Town
         case Small
@@ -67,7 +81,7 @@ struct Town {
     
     // you can add instance methods to your struct:
     func printTownDescription() {
-        print("population: \(population); number of stoplights: \(numberOfStoplights)")
+        print("population: \(population); number of stoplights: \(numberOfStoplights); region: \(region)")
     }
     
     // if a function changes a struct's info, it must be marked as "mutating"
