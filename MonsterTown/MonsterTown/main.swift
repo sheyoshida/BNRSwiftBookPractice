@@ -22,12 +22,14 @@ print(ts)
 myTown.changePopulation(1000000) // note: lazy property is not updated after it is calculated the first time
 print("Size: \(myTown.townSize); population: \(myTown.population)")
 
-let fredTheZombie = Zombie(limp: false, fallingApart: false, town: myTown, monsterName: "Fred")
+var fredTheZombie: Zombie? = Zombie(limp: false, fallingApart: false, town: myTown, monsterName: "Fred")
 //fredTheZombie.town = myTown
 //fredTheZombie.terrorizeTown()
 
-fredTheZombie.town?.printTownDescription()
-fredTheZombie.changeName("Fred The Zombie", walksWithLimp: false)
+fredTheZombie?.town?.printTownDescription()
+fredTheZombie?.changeName("Fred The Zombie", walksWithLimp: false)
+
+var convenintZombie = Zombie(limp: true, fallingApart: false)
 
 let countDracula = Vampire(town: myTown, monsterName: "Count Dracula")
 countDracula.town = myTown
@@ -39,14 +41,16 @@ print(countDracula.vampireThralls)
 let spookyNoise = Zombie.makeSpookyNoise() // type method can only be called on type/class
 
 // test out getters and setters 
-print("Victim pool: \(fredTheZombie.victimPool)")
-fredTheZombie.victimPool = 500 // access the setter...
-print("Victim pool: \(fredTheZombie.victimPool)")
+print("Victim pool: \(fredTheZombie?.victimPool)")
+fredTheZombie?.victimPool = 500 // access the setter...
+print("Victim pool: \(fredTheZombie?.victimPool)")
 
 // test static property: 
 if Zombie.isTerrifying {
     print("run away!!")
 }
+
+fredTheZombie = nil // deinitialize
 
 /*
 ACCESS CONTROL:

@@ -17,11 +17,14 @@ CLASSES:
 Class Initialization: 
     - will be either:
  designated initializer: responsible for making sure that an instance's properties all have values before initialization completes, making instance ready to use! These are "unadorened" meaning no special keyword is placed before init. This is the default state.
- convenience initializer: supplement designated initializers by calling across a class to its designated initializer. The role is typically to create an instance of a class for a VERY SPECIFIC use... 
  
- default initializer:empty initializer is provided as long as you provide default values to all properties. Typically this is represented by empty parenthesis ie: Zombie()
+ convenience initializer: supplement designated initializers by calling across a class to its designated initializer. The role is typically to create an instance of a class for a VERY SPECIFIC use...
  
-
+ default initializer: empty initializer is provided as long as you provide default values to all properties. Typically this is represented by empty parenthesis ie: Zombie()
+ 
+ required initializers for classes: ie: you want all subclasses of Monster to provide values for the monster's name and town - mark the initializer with keyword "required".
+ 
+ deinitialization: removing instances of a class from memory when they are no longer needed. Deinitializers are written with "deinit" keyword and take no arguments.
 */
 
 class Monster {
@@ -44,7 +47,7 @@ class Monster {
         }
     }
     
-    init (town: Town?, monsterName: String) { // designated initializer (unadorened) 
+    required init (town: Town?, monsterName: String) { // designated initializer (unadorened/default), required - subclasses must provide initializer
         self.town = town
         name = monsterName
         

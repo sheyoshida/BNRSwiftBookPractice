@@ -29,17 +29,32 @@ class Zombie: Monster {
         super.init(town: town, monsterName: monsterName)
     }
     
+    convenience init(limp: Bool, fallingApart: Bool) { // convenience initializer
+        self.init(limp: limp, fallingApart: fallingApart, town: nil, monsterName: "Fred")
+        if walksWithLimp {
+            print("this zombie has a bad knee.")
+        }
+    }
+    
+    required init(town: Town?, monsterName: String) {
+        walksWithLimp = false
+        isFallingApart = false
+        super.init(town: town, monsterName: monsterName)
+    }
+    
     final override func terrorizeTown() { // you can override superclass functions... final means it can not be altered later
         if town?.population > 10 && !isFallingApart {
             town?.changePopulation(-10)
             super.terrorizeTown() // super is used to override or borrow functionality from a superclass.
         }
-
-        
     }
     
     func changeName(name: String, walksWithLimp: Bool) {
         self.name = name
         self.walksWithLimp = walksWithLimp 
+    }
+    
+    deinit {
+        print("Zombie named \(name) is no longer with us. :(")
     }
 }
