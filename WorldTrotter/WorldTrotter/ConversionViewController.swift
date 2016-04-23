@@ -14,13 +14,50 @@ class ConversionViewController: UIViewController {
     @IBOutlet var textField: UITextField!
     
     
-    @IBAction func fahrenheitFieldEditingChanged(textField: UITextField) {
+    
+    var fahrenheitValue: Double? {
+        didSet { // property observer is called whenever value changes
+            updateCelsiusLabel()
+        }
+    }
+    var celsiusValue: Double? {
+        if let value = fahrenheitValue {
+            return (value - 32) * (5/9)
+        }
+        else {
+            return nil
+        }
+    }
+    
+    let numberFormatter: NSNumberFormatter = {
         
-        if let text = textField.text where !text.isEmpty {
-            celsiusLabel.text = text
+        let nf = NSNumberFormatter() // format number
+        nf.numberStyle = .DecimalStyle
+        nf.minimumFractionDigits = 0
+        nf.maximumFractionDigits = 1
+        return nf
+    }() // adding closure to instantiate number formatter
+    
+    func updateCelsiusLabel() {
+        if let value = celsiusValue {
+//            celsiusLabel.text = "\(value)"
+            celsiusLabel.text = numberFormatter.stringFromNumber(value)
         }
         else {
             celsiusLabel.text = "???"
+        }
+    }
+    
+
+    
+    
+    @IBAction func fahrenheitFieldEditingChanged(textField: UITextField) {
+        
+        if let text = textField.text, value = Double(text) {
+            fahrenheitValue = value
+        }
+        else {
+            fahrenheitValue = nil
         }
     }
     
