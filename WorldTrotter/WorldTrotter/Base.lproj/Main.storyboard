@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kiE-Y7-Eku">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Conversion View Controller-->
+        <!--Convert-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ConversionViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,6 +48,7 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad"/>
                                 <connections>
                                     <action selector="fahrenheitFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="bey-0K-L4Y"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="svj-to-cd4"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -69,7 +70,9 @@
                                 <variation key="heightClass=regular" constant="10"/>
                             </constraint>
                             <constraint firstItem="bom-Is-3IA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rXi-vJ-Xft"/>
-                            <constraint firstItem="X10-Ki-diA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="zh4-fq-nel"/>
+                            <constraint firstItem="X10-Ki-diA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="zh4-fq-nel">
+                                <variation key="heightClass=regular" constant="16"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -117,6 +120,7 @@
                             <outletCollection property="gestureRecognizers" destination="mEw-Sw-a8g" appends="YES" id="Q53-3b-edi"/>
                         </connections>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Convert" image="ConvertIcon" id="0Nh-ud-xDo"/>
                     <connections>
                         <outlet property="celsiusLabel" destination="r5U-iA-qN5" id="aG1-Fu-lYR"/>
                         <outlet property="textField" destination="X10-Ki-diA" id="SRY-pZ-Leb"/>
@@ -129,7 +133,43 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="222" y="502.5"/>
+            <point key="canvasLocation" x="1325" y="1323.75"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="AAA-Y4-stw">
+            <objects>
+                <viewController id="Iep-Ci-MCG" customClass="MapViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="e3V-7p-xlC">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </mapView>
+                    <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="sh1-5X-B94"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Pj-u0-RHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="513" y="1323.75"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="3gP-Ej-gv2">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kiE-Y7-Eku" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="bez-0P-IIG">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="RKW-Xy-pwP"/>
+                        <segue destination="Iep-Ci-MCG" kind="relationship" relationship="viewControllers" id="Cjn-1J-Hsk"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vn6-B0-P45" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901" y="585.75"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ConvertIcon" width="49" height="33"/>
+        <image name="MapIcon" width="49" height="33"/>
+    </resources>
 </document>
