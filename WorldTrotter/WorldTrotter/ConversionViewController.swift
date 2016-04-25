@@ -49,19 +49,19 @@ class ConversionViewController: UIViewController, UITextFieldDelegate { // confo
         // get the hour using NSCalendar
         let hour = NSCalendar.currentCalendar().component(NSCalendarUnit.Hour, fromDate: NSDate())
         
-        let myColor: UIColor
+        var myColor: UIColor = UIColor.whiteColor()
         
                 switch hour {
                 case 1...6:
-                    myColor = UIColor.purpleColor()
+                    myColor = UIColor.whiteColor()
                 case 7...12:
-                    myColor = UIColor.redColor()
-                case 13...18:
-                    myColor = UIColor.greenColor()
-                case 19...24:
-                    myColor = UIColor.yellowColor()
-                default:
                     myColor = UIColor.lightGrayColor()
+                case 13...18:
+                    myColor = UIColor.grayColor()
+                case 19...24:
+                    myColor = UIColor.darkGrayColor()
+                default:
+                    break
                 }
         
         view.backgroundColor = myColor
@@ -71,8 +71,15 @@ class ConversionViewController: UIViewController, UITextFieldDelegate { // confo
     // built in delegate method to prevent adding multiple decimal separators
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
-        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
-        let replacementTextHasDecimalSeparator = string.rangeOfString(".")
+//        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".") // "." is inconsistent character for internationalized text
+//        let replacementTextHasDecimalSeparator = string.rangeOfString(".")
+       
+        // set up localized text
+        let currentLocale = NSLocale.currentLocale()
+        let decimalSeparator = currentLocale.objectForKey(NSLocaleDecimalSeparator) as! String
+        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(decimalSeparator)
+        let replacementTextHasDecimalSeparator = string.rangeOfString(decimalSeparator)
+    
         let letterCharacters = NSCharacterSet.letterCharacterSet() // disallow letters
         
         if string.lowercaseString.rangeOfCharacterFromSet(letterCharacters) != nil {
@@ -103,8 +110,16 @@ class ConversionViewController: UIViewController, UITextFieldDelegate { // confo
     
     @IBAction func fahrenheitFieldEditingChanged(textField: UITextField) {
         
-        if let text = textField.text, value = Double(text) {
-            fahrenheitValue = value
+//        if let text = textField.text, value = Double(text) {
+//            fahrenheitValue = value
+//        }
+//        else {
+//            fahrenheitValue = nil
+//        }
+        
+        // revise for localized string 
+        if let text = textField.text, number = numberFormatter.numberFromString(text) {
+            fahrenheitValue = number.doubleValue
         }
         else {
             fahrenheitValue = nil
