@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-//    @IBOutlet var questionLabel: UILabel!
     @IBOutlet var currentQuestionLabel: UILabel!
+    @IBOutlet var currentQuestionLabelCenterXConstraint: NSLayoutConstraint!
+    
     @IBOutlet var nextQuestionLabel: UILabel!
+    @IBOutlet var nextQuestionLabelCenterXConstraint: NSLayoutConstraint! 
     
     @IBOutlet var answerLabel: UILabel!
     
@@ -29,6 +31,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() { // override
         super.viewDidLoad()
         currentQuestionLabel.text = questions[currentQuestionIndex] // question 0 appears when app loads
+        
+        updateOffScreenLabel()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -59,11 +63,20 @@ class ViewController: UIViewController {
     
     func animateLabelTransitions() {
         
-        // animate the alpha
+        // force outstanding layout changes to occur
+        view.layoutIfNeeded()
+        
 //        UIView.animateWithDuration(0.5, animations: { // closure
 //            self.currentQuestionLabel.alpha = 0
 //            self.nextQuestionLabel.alpha = 1
 //        })
+        
+        // animate the alpha
+        // and the center x constraints
+        let screenWidth = view.frame.width
+        self.nextQuestionLabelCenterXConstraint.constant = 0
+        self.currentQuestionLabelCenterXConstraint.constant += screenWidth
+        
         
         UIView.animateWithDuration(0.5,
                                    delay: 0,
@@ -71,10 +84,20 @@ class ViewController: UIViewController {
                                    animations: {
                                     self.currentQuestionLabel.alpha = 0
                                     self.nextQuestionLabel.alpha = 1
+                                    
+                                    self.view.layoutIfNeeded() // force layout of views
             },
                                    completion: { _ in // closure to swap values
                                     swap(&self.currentQuestionLabel, &self.nextQuestionLabel)
+                                    swap(&self.currentQuestionLabelCenterXConstraint, &self.nextQuestionLabelCenterXConstraint)
+                                    self.updateOffScreenLabel()
         })
+    }
+    
+    func updateOffScreenLabel() {
+        let screenWidth = view.frame.width
+        nextQuestionLabelCenterXConstraint.constant = -screenWidth
+        
     }
     
     
