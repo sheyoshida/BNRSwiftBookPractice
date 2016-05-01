@@ -12,6 +12,28 @@ class ItemsViewController: UITableViewController {
     
     var itemStore: ItemStore!
     
+    @IBAction func addNewItem(sender: AnyObject) {
+
+    }
+    
+    @IBAction func toggleEditingMode(sender: AnyObject) {
+        // if you are currently in eidting mode...
+        if editing {
+            // change text of button to inform user of state
+            sender.setTitle("Edit", forState: .Normal)
+            
+            // turn off editing mode
+            setEditing(false, animated: true)
+        }
+        else {
+            // change text of button to inform user of state
+            sender.setTitle("Done", forState: .Normal)
+            
+            // enter editing mode
+            setEditing(true, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
