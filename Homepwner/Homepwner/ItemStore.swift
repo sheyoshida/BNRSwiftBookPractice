@@ -25,12 +25,12 @@ class ItemStore { // does not inherit from any other class = base class
         return newItem
     }
     
-    // implement designated initializer to add five random items with a loop
-    init() {
-        for _ in 0..<5 {
-            createItem()
-        }
-    }
+//    // implement designated initializer to add five random items with a loop
+//    init() {
+//        for _ in 0..<5 {
+//            createItem()
+//        }
+//    }
     
     
     
