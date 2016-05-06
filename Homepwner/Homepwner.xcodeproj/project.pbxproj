@@ -14,6 +14,7 @@
 		4D065E5D1CD29B8300338059 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D065E5C1CD29B8300338059 /* ItemsViewController.swift */; };
 		4D065E5F1CD29C9700338059 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D065E5E1CD29C9700338059 /* Item.swift */; };
 		4D065E611CD2A20A00338059 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D065E601CD2A20A00338059 /* ItemStore.swift */; };
+		4DA4220A1CDCBB4C00C9CADC /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA422091CDCBB4C00C9CADC /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4D065E5C1CD29B8300338059 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		4D065E5E1CD29C9700338059 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4D065E601CD2A20A00338059 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		4DA422091CDCBB4C00C9CADC /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				4D065E4A1CD29AAB00338059 /* AppDelegate.swift */,
+				4DA422091CDCBB4C00C9CADC /* Color.swift */,
 				4D065E5E1CD29C9700338059 /* Item.swift */,
 				4D065E601CD2A20A00338059 /* ItemStore.swift */,
 				4D065E5C1CD29B8300338059 /* ItemsViewController.swift */,
@@ -144,6 +147,7 @@
 				4D065E5D1CD29B8300338059 /* ItemsViewController.swift in Sources */,
 				4D065E5F1CD29C9700338059 /* Item.swift in Sources */,
 				4D065E611CD2A20A00338059 /* ItemStore.swift in Sources */,
+				4DA4220A1CDCBB4C00C9CADC /* Color.swift in Sources */,
 				4D065E4B1CD29AAB00338059 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +298,7 @@
 				4D065E5B1CD29AAB00338059 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -72,6 +72,8 @@ class ItemsViewController: UITableViewController {
 //    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        
         // create instance of UITableViewCell, with default appearance
 //        let cell = UITableViewCell(style: .Value1, reuseIdentifier: "UITableViewCell")
         
@@ -84,6 +86,8 @@ class ItemsViewController: UITableViewController {
         
         cell.textLabel?.text = item.name
         cell.detailTextLabel?.text = "$\(item.valueInDollars)"
+        
+        cell.textLabel?.textColor = UIColor.lightGreenColor() // change color
         
         return cell
     }
